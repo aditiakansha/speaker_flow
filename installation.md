@@ -37,7 +37,7 @@
 
 ## 2. macOS — Installing Git via Homebrew
 
-> 🎬 **Video walkthrough:** [How to Install Homebrew on Mac – Beginner macOS Tutorial (2026)](https://www.youtube.com/watch?v=kwwugLh9e3c)  
+> 🎬 **Video walkthrough:** https://www.youtube.com/watch?v=flQxyoyBX5M  
 > 🎬 **Apple Silicon (M1/M2/M3/M4) specific:** [EASY Homebrew Installation on Apple Silicon](https://www.youtube.com/watch?v=4JMIfljw7GA)
 
 ---
