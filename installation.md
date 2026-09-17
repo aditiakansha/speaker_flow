@@ -9,14 +9,12 @@
 ## 📋 Table of Contents
 
 1. [What You're Installing & Why](#1-what-youre-installing--why)
-2. [macOS — Installing Git via Homebrew](#2-macos--installing-git-via-homebrew)
-3. [Linux — Installing Git via APT](#3-linux--installing-git-via-apt)
-4. [Windows — Installing Git](#4-windows--installing-git)
-5. [Configuring Git (All Platforms)](#5-configuring-git-all-platforms)
-6. [Setting Up VS Code Integration](#6-setting-up-vs-code-integration)
-7. [Verify Everything Works](#7-verify-everything-works)
-8. [Common Issues & Fixes](#8-common-issues--fixes)
-9. [Quick Reference Cheatsheet](#9-quick-reference-cheatsheet)
+2. [Windows — Git Setup](#2-windows--git-setup)
+3. [macOS — Git Setup](#3-macos--git-setup)
+4. [Linux — Git Setup](#4-linux--git-setup)
+5. [VS Code Setup (All Platforms)](#5-vs-code-setup-all-platforms)
+6. [Quick Reference Cheatsheet](#6-quick-reference-cheatsheet)
+7. [Pre-Workshop Checklist](#7-pre-workshop-checklist)
 
 ---
 
@@ -27,15 +25,150 @@
 | **Git** | A version control system | Tracks changes to your code, lets you collaborate |
 | **Homebrew** (Mac only) | A package manager for macOS | Makes installing developer tools like Git simple |
 | **VS Code** | Code editor | Where you'll write code — we'll connect it to Git |
+| **GitLens** | A VS Code extension | Supercharges Git inside the editor with blame, history, and more |
 
 > **Not sure which OS you have?**  
-> - Mac: Apple logo top-left → "About This Mac"  
 > - Windows: Start → Settings → System → About  
+> - Mac: Apple logo top-left → "About This Mac"  
 > - Linux: You already know. 😄
 
 ---
 
-## 2. macOS — Installing Git via Homebrew
+## 2. Windows — Git Setup
+
+> 🎬 **Video walkthrough:** [How to Download & Install Git | Windows, Mac & Linux (Step by Step)](https://www.youtube.com/watch?v=lh-O3hZBqdQ)  
+> 🎬 **Windows-only tutorial:** [How to Install Git on Windows | Full Guide](https://www.youtube.com/watch?v=VWbX2B3Q-1g)
+
+---
+
+### Step 1 — Download the installer
+
+Go to: **[git-scm.com/download/win](https://git-scm.com/download/win)**
+
+The download should start automatically. If it doesn't, click the link for "64-bit Git for Windows Setup."
+
+---
+
+### Step 2 — Run the installer
+
+Double-click the downloaded `.exe` file. Click **Yes** on the security popup.
+
+---
+
+### Step 3 — Go through the installer (keep defaults)
+
+The installer has many screens. Here's what to watch for:
+
+| Screen | What to do |
+|--------|-----------|
+| License | Click **Next** |
+| Select Destination | Keep default, click **Next** |
+| Select Components | Keep defaults, click **Next** |
+| Default Editor | Change to **Visual Studio Code** if you use it, else keep default |
+| **Adjusting PATH** ⭐ | Select **"Git from the command line and also from 3rd-party software"** |
+| HTTPS transport backend | Keep **"Use the OpenSSL library"**, click **Next** |
+| Line ending conversions | Keep **"Checkout Windows-style, commit Unix-style"**, click **Next** |
+| Terminal emulator | Keep **"Use MinTTY"**, click **Next** |
+| Default behavior of `git pull` | Keep **"Default (fast-forward or merge)"**, click **Next** |
+| Credential helper | Keep **"Git Credential Manager"**, click **Next** |
+| Extra options | Keep defaults, click **Next** |
+| Experimental options | Leave everything unchecked, click **Install** |
+
+---
+
+### Step 4 — Verify Git is installed
+
+After install completes, open **Git Bash** (search for it in the Start menu) and run:
+
+```bash
+git --version
+```
+
+Expected output: `git version 2.x.x` ✅
+
+---
+
+### Step 5 — Configure Git
+
+Git needs to know who you are before it can track your commits. Run these three commands in Git Bash, one at a time, replacing the placeholder text with your actual name and email:
+
+```bash
+git config --global user.name "Your Name"
+```
+```bash
+git config --global user.email "you@example.com"
+```
+```bash
+git config --global init.defaultBranch main
+```
+
+> Use the same email you use (or plan to use) for your GitHub account — this is how GitHub links your commits to your profile.
+
+Then verify it worked:
+
+```bash
+git config --list
+```
+
+You should see your `user.name`, `user.email`, and `init.defaultBranch` in the output. ✅
+
+---
+
+### ⚠️ Common Issues — Windows
+
+---
+
+**❌ `git` is not recognised in Command Prompt after installation**
+
+During setup, you may have chosen the wrong PATH option.
+
+Fix — reinstall and select the right option:
+1. Uninstall Git from Add/Remove Programs
+2. Reinstall from [git-scm.com/download/win](https://git-scm.com/download/win)
+3. On the "Adjusting your PATH environment" screen, select **"Git from the command line and also from 3rd-party software"**
+
+Alternatively, use **Git Bash** instead of Command Prompt — it always works regardless of PATH.
+
+---
+
+**❌ Windows Defender or antivirus blocked the installer**
+
+Right-click the `.exe` → **Properties** → check **"Unblock"** at the bottom → click OK → run again.
+
+---
+
+**❌ Git asks for username and password every time you push**
+
+You need a credential helper. Git for Windows installs one by default — if it didn't activate:
+
+```bash
+git config --global credential.helper manager
+```
+
+---
+
+**❌ Default branch shows as `master` instead of `main`**
+
+```bash
+git config --global init.defaultBranch main
+```
+
+This only affects new repositories going forward. Existing repos keep their branch name.
+
+---
+
+**❌ `git config --list` shows no user.name or user.email**
+
+You skipped Step 5. Go back and run:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+---
+
+## 3. macOS — Git Setup
 
 > 🎬 **Video walkthrough:** https://www.youtube.com/watch?v=flQxyoyBX5M  
 > 🎬 **Apple Silicon (M1/M2/M3/M4) specific:** [EASY Homebrew Installation on Apple Silicon](https://www.youtube.com/watch?v=4JMIfljw7GA)
@@ -112,11 +245,104 @@ brew install git
 git --version
 ```
 
-Expected output: `git version 2.x.x`  ✅
+Expected output: `git version 2.x.x` ✅
 
 ---
 
-## 3. Linux — Installing Git via APT
+### Step 7 — Configure Git
+
+Git needs to know who you are before it can track your commits. Run these three commands in Terminal, one at a time:
+
+```bash
+git config --global user.name "Your Name"
+```
+```bash
+git config --global user.email "you@example.com"
+```
+```bash
+git config --global init.defaultBranch main
+```
+
+> Use the same email you use (or plan to use) for your GitHub account.
+
+Then verify it worked:
+
+```bash
+git config --list
+```
+
+You should see your `user.name`, `user.email`, and `init.defaultBranch` in the output. ✅
+
+---
+
+### ⚠️ Common Issues — macOS
+
+---
+
+**❌ `brew: command not found` after installation**
+
+You skipped or miscopied the two PATH commands after installation.
+
+Fix:
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+Close and reopen your terminal, then run `brew --version` again.
+
+---
+
+**❌ `curl: (7) Failed to connect` or network errors during Homebrew install**
+
+Your internet connection dropped, or a firewall blocked the download.
+
+Fix: Check your connection, disable VPN if you're using one, and re-run the install command. Homebrew will resume from where it left off.
+
+---
+
+**❌ Homebrew installer says "Xcode Command Line Tools" are missing**
+
+This is normal on a fresh Mac. Homebrew will prompt to install them automatically. Just press **Enter** when it asks and wait — this can take 5–10 minutes on its own.
+
+---
+
+**❌ `git --version` still shows an old system version after `brew install git`**
+
+macOS ships with an older built-in Git. Homebrew installs a newer one, but you may need to restart your terminal first. If it still shows the old version:
+
+```bash
+which git
+```
+
+If the output is `/usr/bin/git` instead of `/opt/homebrew/bin/git`, run:
+
+```bash
+echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zprofile
+source ~/.zprofile
+```
+
+---
+
+**❌ `brew install git` says "already installed" but `git --version` shows old version**
+
+```bash
+brew upgrade git
+```
+
+---
+
+**❌ `git config --list` shows no user.name or user.email**
+
+You skipped Step 7. Go back and run:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+---
+
+## 4. Linux — Git Setup
 
 > This guide is for **Ubuntu / Debian-based** distributions (Ubuntu, Pop!_OS, Linux Mint, etc.).  
 > If you're on Arch, Fedora, or another distro, use your respective package manager (`pacman -S git`, `dnf install git`, etc.).
@@ -137,7 +363,7 @@ sudo apt update
 
 You'll be asked for your password. Type it and press Enter.
 
-> `sudo` means "run as administrator". It's normal — don't skip it.
+> `sudo` means "run as administrator." It's normal — don't skip it.
 
 ---
 
@@ -151,7 +377,7 @@ When prompted `Do you want to continue? [Y/n]`, press **Y** and Enter.
 
 ---
 
-### Step 4 — Verify installation
+### Step 4 — Verify Git is installed
 
 ```bash
 git --version
@@ -161,65 +387,9 @@ Expected output: `git version 2.x.x` ✅
 
 ---
 
-## 4. Windows — Installing Git
+### Step 5 — Configure Git
 
-> 🎬 **Video walkthrough:** [How to Download & Install Git | Windows, Mac & Linux (Step by Step)](https://www.youtube.com/watch?v=lh-O3hZBqdQ)  
-> 🎬 **Windows-only tutorial:** [How to Install Git on Windows | Full Guide](https://www.youtube.com/watch?v=VWbX2B3Q-1g)
-
----
-
-### Step 1 — Download the installer
-
-Go to: **[git-scm.com/download/win](https://git-scm.com/download/win)**
-
-The download should start automatically. If it doesn't, click the link for "64-bit Git for Windows Setup."
-
----
-
-### Step 2 — Run the installer
-
-Double-click the downloaded `.exe` file. Click **Yes** on the security popup.
-
----
-
-### Step 3 — Go through the installer (keep defaults)
-
-The installer has many screens. Here's what to watch for:
-
-| Screen | What to do |
-|--------|-----------|
-| License | Click **Next** |
-| Select Destination | Keep default, click **Next** |
-| Select Components | Keep defaults, click **Next** |
-| Default Editor | Change to **Visual Studio Code** if you use it, else keep default |
-| **Adjusting PATH** ⭐ | Select **"Git from the command line and also from 3rd-party software"** |
-| HTTPS transport backend | Keep **"Use the OpenSSL library"**, click **Next** |
-| Line ending conversions | Keep **"Checkout Windows-style, commit Unix-style"**, click **Next** |
-| Terminal emulator | Keep **"Use MinTTY"**, click **Next** |
-| Default behavior of `git pull` | Keep **"Default (fast-forward or merge)"**, click **Next** |
-| Credential helper | Keep **"Git Credential Manager"**, click **Next** |
-| Extra options | Keep defaults, click **Next** |
-| Experimental options | Leave everything unchecked, click **Install** |
-
----
-
-### Step 4 — Verify installation
-
-After install completes, open **Git Bash** (search for it in the Start menu) or **Command Prompt**, and run:
-
-```bash
-git --version
-```
-
-Expected output: `git version 2.x.x` ✅
-
----
-
-## 5. Configuring Git (All Platforms)
-
-This step is required on **every OS**. Git needs to know who you are before it can track your commits.
-
-Open your terminal (Git Bash on Windows) and run these four commands **one at a time**, replacing the placeholder text with your actual name and email:
+Run these three commands in Terminal, one at a time:
 
 ```bash
 git config --global user.name "Your Name"
@@ -231,11 +401,9 @@ git config --global user.email "you@example.com"
 git config --global init.defaultBranch main
 ```
 
-> Use the same email you use (or plan to use) for your GitHub account. This is how GitHub links your commits to your profile.
+> Use the same email you use (or plan to use) for your GitHub account.
 
----
-
-### Verify your configuration
+Then verify it worked:
 
 ```bash
 git config --list
@@ -245,131 +413,14 @@ You should see your `user.name`, `user.email`, and `init.defaultBranch` in the o
 
 ---
 
-## 6. Setting Up VS Code Integration
-
-We'll be using VS Code as our editor during the workshop. This step connects VS Code to your terminal so you can open any folder instantly.
-
-### Step 1 — Open VS Code
-
-If you don't have VS Code, download it from **[code.visualstudio.com](https://code.visualstudio.com/)** and install it.
-
----
-
-### Step 2 — Install the `code` command (macOS/Linux only)
-
-> Windows users: VS Code's `code` command is added automatically during installation. Skip to Step 3.
-
-1. Open VS Code
-2. Press **`Cmd + Shift + P`** (Mac) or **`Ctrl + Shift + P`** (Linux) to open the Command Palette
-3. Type `shell command`
-4. Click **"Shell Command: Install 'code' command in PATH"**
-5. Close your terminal completely and reopen it
-
----
-
-### Step 3 — Test the `code` command
-
-Navigate to any folder and type:
-
-```bash
-code .
-```
-
-This should open that folder in VS Code instantly. ✅
-
----
-
-### Step 4 — Set VS Code as Git's default editor (optional but recommended)
-
-```bash
-git config --global core.editor "code --wait"
-```
-
----
-
-## 7. Verify Everything Works
-
-Run through this quick checklist before the workshop:
-
-```bash
-# 1. Check Git version
-git --version
-
-# 2. Check your Git config
-git config --list
-
-# 3. Check VS Code CLI
-code --version
-```
-
-If all three return output without errors, **you're fully set up.** 🎉
-
----
-
-## 8. Common Issues & Fixes
-
-### 🍎 macOS Issues
-
----
-
-**❌ `brew: command not found` after installation**
-
-You skipped or miscopied the two PATH commands after installation.
-
-Fix:
-```bash
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
-Close and reopen your terminal. Run `brew --version` again.
-
----
-
-**❌ `curl: (7) Failed to connect` or network errors during Homebrew install**
-
-Your internet connection dropped or a firewall blocked the download.
-
-Fix: Check your connection, disable VPN if you're using one, and re-run the install command. Homebrew will resume from where it left off.
-
----
-
-**❌ Homebrew installer says "Xcode Command Line Tools" are missing**
-
-This is normal on a fresh Mac. Homebrew will prompt to install them automatically. Just press **Enter** when it asks and wait — this can take 5–10 minutes on its own.
-
----
-
-**❌ `git version` still shows an old system version after `brew install git`**
-
-macOS ships with an older version of Git. Homebrew installs a newer one, but you may need to restart your terminal first. If it still shows the old version:
-
-```bash
-which git
-```
-
-If the output is `/usr/bin/git` (not `/opt/homebrew/bin/git`), run:
-```bash
-echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zprofile
-source ~/.zprofile
-```
-
----
-
-**❌ `brew install git` says "already installed" but `git --version` shows old version**
-
-```bash
-brew upgrade git
-```
-
----
-
-### 🐧 Linux Issues
+### ⚠️ Common Issues — Linux
 
 ---
 
 **❌ `sudo: command not found`**
 
 You might be logged in as root already. Try running without `sudo`:
+
 ```bash
 apt update && apt install git
 ```
@@ -378,7 +429,6 @@ apt update && apt install git
 
 **❌ `E: Unable to fetch some archives` or network errors**
 
-Try switching to a different mirror or check your internet connection:
 ```bash
 sudo apt update --fix-missing
 sudo apt install git
@@ -392,57 +442,10 @@ Make sure you're using `sudo`. Without it, you don't have admin rights to instal
 
 ---
 
-### 🪟 Windows Issues
-
----
-
-**❌ `git` is not recognised in Command Prompt after installation**
-
-During setup, you may have chosen the wrong PATH option. The fix:
-
-1. Uninstall Git from Add/Remove Programs
-2. Reinstall from [git-scm.com/download/win](https://git-scm.com/download/win)
-3. On the "Adjusting your PATH environment" screen, select **"Git from the command line and also from 3rd-party software"**
-
-Alternatively, use **Git Bash** instead of Command Prompt — it always works.
-
----
-
-**❌ Windows Defender or antivirus blocked the installer**
-
-Right-click the `.exe` → **Properties** → check **"Unblock"** at the bottom → click OK → run again.
-
----
-
-**❌ `code .` doesn't work in Git Bash**
-
-VS Code may not have been added to PATH. Fix:
-
-1. Open VS Code
-2. Press `Ctrl + Shift + P`
-3. Type `shell command`
-4. Click **"Shell Command: Install 'code' command in PATH"**
-5. Restart Git Bash
-
----
-
-**❌ Git asks for username and password every time you push**
-
-You need to set up a credential helper. Git for Windows installs one by default — if it didn't activate:
-
-```bash
-git config --global credential.helper manager
-```
-
----
-
-### 🔧 General / All Platforms
-
----
-
 **❌ `git config --list` shows no user.name or user.email**
 
-You skipped the configuration step. Run:
+You skipped Step 5. Go back and run:
+
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
@@ -450,56 +453,309 @@ git config --global user.email "you@example.com"
 
 ---
 
-**❌ `error: Your local changes to the following files would be overwritten by merge`**
+**❌ Default branch shows as `master` instead of `main`**
 
-You have uncommitted local changes. Either commit them or stash them:
-```bash
-git stash
-git pull
-git stash pop
-```
-
----
-
-**❌ Default branch is `master` instead of `main`**
-
-Run:
 ```bash
 git config --global init.defaultBranch main
 ```
-This only affects new repositories. Existing repos keep their branch name.
 
 ---
 
-## 9. Quick Reference Cheatsheet
+## 5. VS Code Setup (All Platforms)
+
+We'll be using VS Code as our editor during the workshop. This section covers three things:
+1. Connecting VS Code to your terminal with `code .`
+2. Installing GitLens
+
+---
+
+### Part A — Install VS Code
+
+If you don't have VS Code yet, download it from **[code.visualstudio.com](https://code.visualstudio.com/)** and install it for your OS.
+
+---
+
+### Part B — Install the `code` command in Terminal
+
+This lets you type `code .` in any terminal to instantly open that folder in VS Code.
+
+#### Windows
+
+The `code` command is added to PATH **automatically** during VS Code installation. Open Command Prompt or Git Bash and verify:
 
 ```bash
-# ── Installation Verification ──────────────────────────────
-git --version                          # Check Git version
-brew --version                         # Check Homebrew (Mac only)
-code --version                         # Check VS Code CLI
+code --version
+```
 
-# ── Configuration ──────────────────────────────────────────
-git config --global user.name "Name"
-git config --global user.email "email@example.com"
+If it works, you're done. ✅
+
+If it doesn't work, open VS Code manually, press `Ctrl + Shift + P`, type `shell command`, and select **"Shell Command: Install 'code' command in PATH"**. Then restart your terminal.
+
+---
+
+#### macOS
+
+1. Open VS Code
+2. Press **`Cmd + Shift + P`** to open the Command Palette
+3. Type `shell command`
+4. Click **"Shell Command: Install 'code' command in PATH"**
+5. **Close your terminal completely and reopen it**
+
+Now test it:
+
+```bash
+code --version
+```
+
+And open any folder:
+
+```bash
+code .
+```
+
+This should open that folder in VS Code instantly. ✅
+
+---
+
+#### Linux
+
+Same as macOS — open VS Code, press **`Ctrl + Shift + P`**, type `shell command`, and click **"Shell Command: Install 'code' command in PATH"**. Restart your terminal and verify:
+
+```bash
+code --version
+```
+
+---
+
+### Set VS Code as Git's default editor
+
+Run this after the `code` command is working:
+
+```bash
+git config --global core.editor "code --wait"
+```
+
+---
+
+### ⚠️ Common Issues — VS Code / `code .`
+
+---
+
+**❌ `code: command not found` on macOS or Linux**
+
+You either skipped the Command Palette step or didn't restart your terminal. Close Terminal fully (not just the tab) and reopen it. If it still fails, redo the Command Palette step.
+
+---
+
+**❌ `code .` opens VS Code but in the wrong folder**
+
+You're in the wrong directory. Use `cd` to navigate to the right folder first, then run `code .`.
+
+---
+
+**❌ `code --version` works but VS Code opens blank with no folder**
+
+`code .` needs the `.` — that dot means "current folder." Without it, VS Code opens with no folder.
+
+---
+
+### Part C — Install GitLens
+
+GitLens is a free VS Code extension that supercharges Git inside the editor. Instead of running terminal commands to find out who changed a line, why it exists, or what the file looked like before — GitLens shows all of that directly in your code.
+
+---
+
+#### What GitLens Does
+
+**1. 🔍 Inline Blame Annotations**
+
+Every line of code gets a subtle annotation at the end showing who last changed it, when, and with what commit message. Hover over it for the full commit details.
+
+![GitLens inline blame annotation showing author and commit info on each line of code](https://gitkraken.com/wp-content/uploads/2024/01/gitlens-inline-blame.png)
+
+> This is the single biggest beginner unlock — instead of guessing why code exists, you immediately see the context.
+
+---
+
+**2. 📊 Commit Graph**
+
+A visual, interactive timeline of every commit in your repo — branches, merges, and tags all laid out clearly. Click any commit to see what changed, search by author or message, and visualise how branches diverged.
+
+![GitLens commit graph showing branch history and merges in a visual timeline](https://miro.medium.com/v2/resize:fit:1400/1*UZqABVCH7C2Jk0Hk1nLmqA.png)
+
+---
+
+**3. 📁 File History & Line History**
+
+- **File History** — every commit that ever touched the file you're in, in order
+- **Line History** — zoom into a specific line or block and see how just that part changed across every commit
+
+![GitLens file history in the VS Code sidebar showing commits that changed the file](https://gitkraken.com/wp-content/uploads/2024/01/gitlens-file-history.png)
+
+---
+
+**4. 🔁 Revision Navigation**
+
+Keyboard shortcuts to jump backwards and forwards through a file's history — like rewinding time on a single file, without leaving VS Code.
+
+---
+
+**5. ⚡ CodeLens (Above Functions and Classes)**
+
+Subtle info lines above every function and class showing when it was last modified, by whom, and how many authors have touched it.
+
+---
+
+**6. 🆚 Side-by-Side Diff Comparisons**
+
+Compare any two branches, commits, or tags side by side — colour-coded additions and deletions, right in the editor.
+
+---
+
+#### Why Install It? (Quick Comparison)
+
+| Situation | Without GitLens | With GitLens |
+|-----------|----------------|--------------|
+| "Who wrote this line?" | `git blame` in terminal | Hover over the line |
+| "Why does this function exist?" | Dig through commit logs | Click the blame annotation |
+| "What changed in this file recently?" | `git log -- filename` | Open File History in one click |
+| "Did I break something before?" | Compare diffs via terminal | Visual side-by-side diff |
+| "Who else has worked on this?" | Multiple `git log` commands | Sidebar at a glance |
+
+---
+
+#### How to Install GitLens
+
+**Method 1 — Extensions Panel (Easiest)**
+
+1. In VS Code, press:
+   - **Mac:** `Cmd + Shift + X`
+   - **Windows/Linux:** `Ctrl + Shift + X`
+
+2. In the search box, type:
+   ```
+   GitLens
+   ```
+
+3. Click on **GitLens — Git supercharged** by **GitKraken**
+
+   > ⚠️ Make sure it's the one by **GitKraken** with millions of downloads — not a clone with a similar name.
+
+4. Click the blue **Install** button. No restart needed — GitLens activates immediately. ✅
+
+---
+
+**Method 2 — Browser Marketplace**
+
+1. Go to: **[marketplace.visualstudio.com/items?itemName=eamodio.gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)**
+2. Click the green **Install** button
+3. Your browser will ask to open VS Code — click **Open Visual Studio Code**
+4. VS Code opens the extension page — click **Install** again
+
+---
+
+**Method 3 — Terminal**
+
+```bash
+code --install-extension eamodio.gitlens
+```
+
+---
+
+#### Verifying GitLens is Active
+
+Open any folder that has a Git repository. You should immediately see:
+
+- Faint grey text at the end of whichever line your cursor is on — that's inline blame
+- A new **GitLens icon** in the left sidebar
+- A "GitLens" item in the bottom status bar
+
+---
+
+#### Free vs Pro
+
+Everything you'll use in this workshop is free:
+
+| Feature | Free (Community) |
+|---------|-----------------|
+| Inline blame annotations | ✅ |
+| File History & Line History | ✅ |
+| Revision Navigation | ✅ |
+| CodeLens (author above functions) | ✅ |
+| Commit search | ✅ |
+| Side-by-side diffs | ✅ |
+| Commit Graph (limited) | ✅ |
+
+---
+
+#### Quick GitLens Shortcuts
+
+| Action | Mac | Windows/Linux |
+|--------|-----|---------------|
+| Toggle inline blame | `Cmd + Shift + P` → "GitLens: Toggle Line Blame" | `Ctrl + Shift + P` → same |
+| Open File History | `Cmd + Shift + P` → "GitLens: Show File History" | `Ctrl + Shift + P` → same |
+| Compare branches | `Cmd + Shift + P` → "GitLens: Compare Branch" | `Ctrl + Shift + P` → same |
+| Open Commit Graph | `Cmd + Shift + P` → "GitLens: Show Commit Graph" | `Ctrl + Shift + P` → same |
+
+---
+
+### ⚠️ Common Issues — GitLens
+
+---
+
+**❌ GitLens installed but I see no inline blame**
+
+Open a file inside a Git repository (a folder where `git init` has been run or that was cloned from GitHub). GitLens only activates inside Git repos — it won't show on random files outside one.
+
+---
+
+**❌ The blame text is there but it's distracting / I want to turn it off**
+
+Press `Cmd/Ctrl + Shift + P`, type `GitLens: Toggle Line Blame` and hit Enter. It toggles off instantly. You can turn it back on the same way.
+
+---
+
+**❌ GitLens shows "No commits yet" on everything**
+
+You haven't made any commits in this repo yet. Make your first commit and GitLens will start showing history.
+
+---
+
+## 6. Quick Reference Cheatsheet
+
+```bash
+# ── Terminal Navigation ────────────────────────────────────
+cd folder-name          # Enter a folder
+cd ..                   # Go up one level
+cd ~                    # Go to your home directory
+ls                      # List files and folders (Mac/Linux)
+ls -la                  # List all files including hidden ones (Mac/Linux)
+dir                     # List files and folders (Windows CMD)
+pwd                     # Print the full path of where you are now
+
+# ── Installation Verification ──────────────────────────────
+git --version           # Check Git version
+brew --version          # Check Homebrew (Mac only)
+code --version          # Check VS Code CLI
+
+# ── Git Configuration ──────────────────────────────────────
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
 git config --global init.defaultBranch main
 git config --global core.editor "code --wait"
-git config --list                      # View all config
-
-# ── Terminal Navigation ────────────────────────────────────
-cd folder-name                         # Enter a folder
-cd ..                                  # Go up one folder
-ls                                     # List files (Mac/Linux)
-dir                                    # List files (Windows CMD)
-pwd                                    # Print current path
+git config --list       # View all your current config
 
 # ── Open VS Code ───────────────────────────────────────────
-code .                                 # Open current folder in VS Code
+code .                  # Open the current folder in VS Code
+code filename.txt       # Open a specific file in VS Code
+
+# ── GitLens via Terminal ───────────────────────────────────
+code --install-extension eamodio.gitlens   # Install GitLens
 ```
 
 ---
 
-## ✅ Pre-Workshop Checklist
+## 7. Pre-Workshop Checklist
 
 Before you show up, make sure you can tick all of these:
 
@@ -507,6 +763,7 @@ Before you show up, make sure you can tick all of these:
 - [ ] `git config --list` shows your name and email
 - [ ] `code .` opens VS Code from the terminal
 - [ ] You have a [GitHub account](https://github.com) (create one if you don't)
+- [ ] GitLens is installed — you can see inline blame text when you open a file in a Git repo
 
 ---
 
