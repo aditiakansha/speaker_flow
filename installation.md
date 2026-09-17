@@ -571,10 +571,6 @@ GitLens is a free VS Code extension that supercharges Git inside the editor. Ins
 
 Every line of code gets a subtle annotation at the end showing who last changed it, when, and with what commit message. Hover over it for the full commit details.
 
-![GitLens screenshot](<assets/Screenshot 2026-09-17 at 3.26.02 PM.png>)
-
-![GitLens screenshot](<assets/Screenshot 2026-09-17 at 3.30.46 PM.png>)
-
 > This is the single biggest beginner unlock — instead of guessing why code exists, you immediately see the context.
 
 ---
@@ -609,7 +605,11 @@ Every line of code gets a subtle annotation at the end showing who last changed 
    GitLens
    ```
 
+   ![VS Code Extensions panel showing GitLens in the installed extensions list](<assets/Screenshot 2026-09-17 at 3.26.02 PM.png>)
+
 3. Click on **GitLens — Git supercharged** by **GitKraken**
+
+   ![GitLens Marketplace details page in VS Code](<assets/Screenshot 2026-09-17 at 3.30.46 PM.png>)
 
    > ⚠️ Make sure it's the one by **GitKraken** with millions of downloads — not a clone with a similar name.
 
