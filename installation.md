@@ -1,8 +1,6 @@
 # 🛠️ Git & GitHub Workshop — Pre-Workshop Setup Manual
 
 > **Please complete this BEFORE you arrive at the workshop.**  
-> The session moves fast — if Git isn't installed, you'll fall behind in the first 15 minutes.  
-> If you get stuck at any step, ping us on the group and we'll help you sort it out.
 
 ---
 
@@ -25,13 +23,6 @@
 | **Git** | A version control system | Tracks changes to your code, lets you collaborate |
 | **Homebrew** (Mac only) | A package manager for macOS | Makes installing developer tools like Git simple |
 | **VS Code** | Code editor | Where you'll write code — we'll connect it to Git |
-| **GitLens** | A VS Code extension | Supercharges Git inside the editor with blame, history, and more |
-
-> **Not sure which OS you have?**  
-> - Windows: Start → Settings → System → About  
-> - Mac: Apple logo top-left → "About This Mac"  
-> - Linux: You already know. 😄
-
 ---
 
 ## 2. Windows — Git Setup
@@ -45,7 +36,7 @@
 
 Go to: **[git-scm.com/download/win](https://git-scm.com/download/win)**
 
-The download should start automatically. If it doesn't, click the link for "64-bit Git for Windows Setup."
+Click the link for "64-bit Git for Windows Setup."
 
 ---
 
@@ -556,113 +547,6 @@ You're in the wrong directory. Use `cd` to navigate to the right folder first, t
 **❌ `code --version` works but VS Code opens blank with no folder**
 
 `code .` needs the `.` — that dot means "current folder." Without it, VS Code opens with no folder.
-
----
-
-### Part C — Install GitLens
-
-GitLens is a free VS Code extension that supercharges Git inside the editor. Instead of running terminal commands to find out who changed a line, why it exists, or what the file looked like before — GitLens shows all of that directly in your code.
-
----
-
-#### What GitLens Does
-
-**1. 🔍 Inline Blame Annotations**
-
-Every line of code gets a subtle annotation at the end showing who last changed it, when, and with what commit message. Hover over it for the full commit details.
-
-> This is the single biggest beginner unlock — instead of guessing why code exists, you immediately see the context.
-
----
-
-
-
-
-
-
-#### Why Install It? (Quick Comparison)
-
-| Situation | Without GitLens | With GitLens |
-|-----------|----------------|--------------|
-| "Who wrote this line?" | `git blame` in terminal | Hover over the line |
-| "Why does this function exist?" | Dig through commit logs | Click the blame annotation |
-| "What changed in this file recently?" | `git log -- filename` | Open File History in one click |
-| "Did I break something before?" | Compare diffs via terminal | Visual side-by-side diff |
-| "Who else has worked on this?" | Multiple `git log` commands | Sidebar at a glance |
-
----
-
-#### How to Install GitLens
-
-**Method 1 — Extensions Panel (Easiest)**
-
-1. In VS Code, press:
-   - **Mac:** `Cmd + Shift + X`
-   - **Windows/Linux:** `Ctrl + Shift + X`
-
-2. In the search box, type:
-   ```
-   GitLens
-   ```
-
-   ![VS Code Extensions panel showing GitLens in the installed extensions list](<assets/Screenshot 2026-09-17 at 3.26.02 PM.png>)
-
-3. Click on **GitLens — Git supercharged** by **GitKraken**
-
-   ![GitLens Marketplace details page in VS Code](<assets/Screenshot 2026-09-17 at 3.30.46 PM.png>)
-
-   > ⚠️ Make sure it's the one by **GitKraken** with millions of downloads — not a clone with a similar name.
-
-4. Click the blue **Install** button. No restart needed — GitLens activates immediately. ✅
-
----
-
-**Method 2 — Browser Marketplace**
-
-1. Go to: **[marketplace.visualstudio.com/items?itemName=eamodio.gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)**
-2. Click the green **Install** button
-3. Your browser will ask to open VS Code — click **Open Visual Studio Code**
-4. VS Code opens the extension page — click **Install** again
-
----
-
-**Method 3 — Terminal**
-
-```bash
-code --install-extension eamodio.gitlens
-```
-
----
-
-#### Verifying GitLens is Active
-
-Open any folder that has a Git repository. You should immediately see:
-
-- Faint grey text at the end of whichever line your cursor is on — that's inline blame
-- A new **GitLens icon** in the left sidebar
-- A "GitLens" item in the bottom status bar
-
----
-
-
-
-
-
-**❌ GitLens installed but I see no inline blame**
-
-Open a file inside a Git repository (a folder where `git init` has been run or that was cloned from GitHub). GitLens only activates inside Git repos — it won't show on random files outside one.
-
----
-
-**❌ The blame text is there but it's distracting / I want to turn it off**
-
-Press `Cmd/Ctrl + Shift + P`, type `GitLens: Toggle Line Blame` and hit Enter. It toggles off instantly. You can turn it back on the same way.
-
----
-
-**❌ GitLens shows "No commits yet" on everything**
-
-You haven't made any commits in this repo yet. Make your first commit and GitLens will start showing history.
 
 ---
 
