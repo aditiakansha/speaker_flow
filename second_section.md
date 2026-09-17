@@ -205,6 +205,56 @@ git pull           # bring the changes into your local files
 # If your push gets rejected
 git pull
 git push
+
+---
+
+### `git stash`
+
+Sometimes you are in the middle of a change and something else comes up — you need to switch branches, pull new code, or fix something urgent. But your work is half done and you are not ready to commit it. `git stash` takes all your uncommitted changes and puts them into a temporary pocket, leaving your working directory completely clean. When you are ready to come back, you bring them back out.
+
+**Demo — adding the subtract function back to `calc.py`**
+
+After the `git pull` from the previous section, the subtract function was removed. Add it back manually into `calc.py` and save the file — but do not commit it yet.
+
+```bash
+git status
+```
+
+Git shows `calc.py` as modified in red. This is your dirty working tree — you have changes sitting there that are not saved in a commit.
+
+```bash
+git stash
+```
+
+Your working directory is instantly clean. Open `calc.py` — the subtract function is gone again. The change is safely stored in the stash pocket.
+
+```bash
+git status
+```
+
+Nothing to commit, working tree clean. You can now safely switch branches or pull without your unfinished work getting in the way.
+
+```bash
+git stash pop
+```
+
+The subtract function comes back into `calc.py` exactly where you left it. Git confirms it dropped `stash@{0}` — the change is restored and cleared from the stash.
+
+```bash
+git stash list
+```
+
+Empty — because `git stash pop` already consumed it. If you want to show a non-empty stash list during the demo, run `git stash list` before `git stash pop`, not after.
+
+![Terminal showing the full git stash flow — status dirty, stash cleans it, status clean, stash pop restores, stash list empty](assets/files-5/git-stash.png)
+
+Now commit the subtract function properly and push:
+
+```bash
+git add .
+git commit -m "feat: add subtract function back"
+git push
+```
 ```
 
 ---
