@@ -169,22 +169,11 @@ Use `git fetch` when you want to see what changed on GitHub before deciding what
 
 ---
 
-## Step 9 — When a Push Gets Rejected
 
-If someone else (or you, via the browser) made a change on GitHub that your local machine does not have yet, and you try to push at the same time, Git will block it.
-
-![Terminal showing git push being rejected with a hint to run git pull first](assets/files-5/git-push-rejected.png)
-
-Git is telling you: there is new work on GitHub that you do not have locally. If it let you push right now, that work could be overwritten. The fix is simple — pull first, then push:
-
-```bash
-git pull
-git push
 ```
 
 This is the standard habit when working with others. Always pull before you push.
 
----
 
 ## The Full Flow
 
