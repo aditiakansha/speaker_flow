@@ -21,6 +21,56 @@ You use Git on your machine, then push your work to GitHub so others can see it,
 
 ---
 
+# Git — Distributed Version Control
+
+---
+
+## Why Do You Need Git?
+
+Imagine you are building a project. You write some code, it works. You keep going, add more features. At some point something breaks and you have no idea what you changed. You cannot go back. You start deleting things trying to fix it and make it worse. You wish you had saved a version from two hours ago.
+
+Now imagine three people working on the same project. One person is editing the login page. Another is changing the database. They both save their files and now half the code is overwritten and nobody knows whose version is right.
+
+Git solves both of these problems.
+
+- It keeps a complete history of every change ever made, so you can always go back
+- It lets multiple people work on the same codebase at the same time without overwriting each other
+- It tells you exactly what changed, when, and who changed it
+- It lets you experiment on a separate branch without touching the working version
+
+Without Git, teams share code over email, Google Drive, or by copying folders with names like `project-final-v2-ACTUAL-FINAL.zip`. Git replaced all of that.
+
+---
+
+## What is a Distributed System?
+
+### Centralised Version Control
+
+In a centralised system — like older tools SVN or CVS — there is one server that holds all the code. Everyone connects to that one place to get files, save changes, or see history.
+
+```
+Developer A  ──┐
+Developer B  ──┼──→  Central Server (one copy of everything)
+Developer C  ──┘
+```
+
+This works until the server goes down. If it does, nobody can work. Nobody can commit, nobody can see history, nobody can do anything. Everything depends on that one machine.
+
+---
+
+### Distributed Version Control
+
+In a distributed system like Git, every person who clones a repository gets a **complete copy** of the entire project — every file, every commit, every branch, the full history — right on their own machine. There is no single master copy that everyone depends on.
+
+```
+Developer A  (full copy)
+Developer B  (full copy)  ←──→  GitHub (full copy — shared reference)
+Developer C  (full copy)
+```
+
+Three machines, three complete independent copies of the same repository. GitHub sits in the middle as the place everyone agrees to sync through — but it is not special. It is just another copy that happens to be online 24/7.
+
+
 ## The Basic Git Flow
 
 Every time you work on a project with Git, the flow looks like this:
