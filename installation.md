@@ -571,46 +571,18 @@ GitLens is a free VS Code extension that supercharges Git inside the editor. Ins
 
 Every line of code gets a subtle annotation at the end showing who last changed it, when, and with what commit message. Hover over it for the full commit details.
 
-![GitLens inline blame annotation showing author and commit info on each line of code](https://gitkraken.com/wp-content/uploads/2024/01/gitlens-inline-blame.png)
+![GitLens screenshot](<assets/Screenshot 2026-09-17 at 3.26.02 PM.png>)
+
+![GitLens screenshot](<assets/Screenshot 2026-09-17 at 3.30.46 PM.png>)
 
 > This is the single biggest beginner unlock — instead of guessing why code exists, you immediately see the context.
 
 ---
 
-**2. 📊 Commit Graph**
 
-A visual, interactive timeline of every commit in your repo — branches, merges, and tags all laid out clearly. Click any commit to see what changed, search by author or message, and visualise how branches diverged.
 
-![GitLens commit graph showing branch history and merges in a visual timeline](https://miro.medium.com/v2/resize:fit:1400/1*UZqABVCH7C2Jk0Hk1nLmqA.png)
 
----
 
-**3. 📁 File History & Line History**
-
-- **File History** — every commit that ever touched the file you're in, in order
-- **Line History** — zoom into a specific line or block and see how just that part changed across every commit
-
-![GitLens file history in the VS Code sidebar showing commits that changed the file](https://gitkraken.com/wp-content/uploads/2024/01/gitlens-file-history.png)
-
----
-
-**4. 🔁 Revision Navigation**
-
-Keyboard shortcuts to jump backwards and forwards through a file's history — like rewinding time on a single file, without leaving VS Code.
-
----
-
-**5. ⚡ CodeLens (Above Functions and Classes)**
-
-Subtle info lines above every function and class showing when it was last modified, by whom, and how many authors have touched it.
-
----
-
-**6. 🆚 Side-by-Side Diff Comparisons**
-
-Compare any two branches, commits, or tags side by side — colour-coded additions and deletions, right in the editor.
-
----
 
 #### Why Install It? (Quick Comparison)
 
@@ -672,36 +644,9 @@ Open any folder that has a Git repository. You should immediately see:
 
 ---
 
-#### Free vs Pro
 
-Everything you'll use in this workshop is free:
 
-| Feature | Free (Community) |
-|---------|-----------------|
-| Inline blame annotations | ✅ |
-| File History & Line History | ✅ |
-| Revision Navigation | ✅ |
-| CodeLens (author above functions) | ✅ |
-| Commit search | ✅ |
-| Side-by-side diffs | ✅ |
-| Commit Graph (limited) | ✅ |
 
----
-
-#### Quick GitLens Shortcuts
-
-| Action | Mac | Windows/Linux |
-|--------|-----|---------------|
-| Toggle inline blame | `Cmd + Shift + P` → "GitLens: Toggle Line Blame" | `Ctrl + Shift + P` → same |
-| Open File History | `Cmd + Shift + P` → "GitLens: Show File History" | `Ctrl + Shift + P` → same |
-| Compare branches | `Cmd + Shift + P` → "GitLens: Compare Branch" | `Ctrl + Shift + P` → same |
-| Open Commit Graph | `Cmd + Shift + P` → "GitLens: Show Commit Graph" | `Ctrl + Shift + P` → same |
-
----
-
-### ⚠️ Common Issues — GitLens
-
----
 
 **❌ GitLens installed but I see no inline blame**
 
