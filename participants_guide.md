@@ -7,9 +7,9 @@
 ## Table of Contents
 
 1. [What You're Installing & Why](#1-whats-youre-installing--why)
-2. [Git Setup](#2-git-setup)
-3. [VS Code Setup (All Platforms)](#3-vs-code-setup-all-platforms)
-4. [Python Setup (All Platforms)](#4-python-setup-all-platforms)
+2. [Windows Setup](#2-windows-setup)
+3. [macOS Setup](#3-macos-setup)
+4. [Linux Setup](#4-linux-setup)
 5. [Pre-Workshop Checklist](#5-pre-workshop-checklist)
 
 ---
@@ -24,10 +24,10 @@
 
 ---
 
-## 2. Git Setup
+## 2. Windows Setup
 
 <details>
-<summary><strong>Windows</strong></summary>
+<summary><strong>Git</strong></summary>
 
 <br>
 
@@ -83,7 +83,71 @@ Expected output: `git version 2.x.x`
 ---
 
 <details>
-<summary><strong>macOS</strong></summary>
+<summary><strong>Python</strong></summary>
+
+<br>
+
+### Step 1 — Download the installer
+
+Go to: **[python.org/downloads](https://www.python.org/downloads/)** and click the **"Download Python 3.x.x"** button.
+
+---
+
+### Step 2 — Run the installer
+
+Double-click the downloaded `.exe`. On the first screen, check **"Add Python to PATH"** before clicking anything else. Then click **"Install Now"**.
+
+---
+
+### Step 3 — Verify
+
+Open a new Git Bash or Command Prompt window:
+
+```bash
+python --version
+pip --version
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>VS Code</strong></summary>
+
+<br>
+
+### Step 1 — Install VS Code
+
+Download from **[code.visualstudio.com](https://code.visualstudio.com/)** and install it for Windows.
+
+---
+
+### Step 2 — Install the Python extension
+
+The Python extension adds language support, IntelliSense, linting, and the ability to run Python files directly inside VS Code.
+
+1. Open VS Code
+2. Click the **Extensions** icon in the left sidebar (or press `Ctrl + Shift + X`)
+3. Search for **Python**
+4. Click **Install** on the extension published by **Microsoft**
+
+You can also install it from the terminal:
+
+```bash
+code --install-extension ms-python.python
+```
+
+Once installed, VS Code will automatically detect your Python installation and use it when you open any `.py` file.
+
+</details>
+
+---
+
+## 3. macOS Setup
+
+<details>
+<summary><strong>Git</strong></summary>
 
 <br>
 
@@ -155,7 +219,77 @@ Expected output: `git version 2.x.x`
 ---
 
 <details>
-<summary><strong>Linux</strong></summary>
+<summary><strong>Python</strong></summary>
+
+<br>
+
+### Step 1 — Install via Homebrew
+
+```bash
+brew install python
+```
+
+---
+
+### Step 2 — Verify
+
+```bash
+python3 --version
+pip3 --version
+```
+
+On macOS with Homebrew, the commands are `python3` and `pip3` — this avoids conflicts with the system Python.
+
+---
+
+### Step 3 — (Optional) Alias `python` to `python3`
+
+```bash
+echo 'alias python=python3' >> ~/.zprofile
+echo 'alias pip=pip3' >> ~/.zprofile
+source ~/.zprofile
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>VS Code</strong></summary>
+
+<br>
+
+### Step 1 — Install VS Code
+
+Download from **[code.visualstudio.com](https://code.visualstudio.com/)** and install it for macOS.
+
+---
+
+### Step 2 — Install the Python extension
+
+The Python extension adds language support, IntelliSense, linting, and the ability to run Python files directly inside VS Code.
+
+1. Open VS Code
+2. Click the **Extensions** icon in the left sidebar (or press `Cmd + Shift + X`)
+3. Search for **Python**
+4. Click **Install** on the extension published by **Microsoft**
+
+You can also install it from the terminal:
+
+```bash
+code --install-extension ms-python.python
+```
+
+Once installed, VS Code will automatically detect your Homebrew Python installation and use it when you open any `.py` file.
+
+</details>
+
+---
+
+## 4. Linux Setup
+
+<details>
+<summary><strong>Git</strong></summary>
 
 <br>
 
@@ -199,69 +333,12 @@ Expected output: `git version 2.x.x`
 
 ---
 
-## 3. VS Code Setup (All Platforms)
+<details>
+<summary><strong>Python</strong></summary>
 
-Download from **[code.visualstudio.com](https://code.visualstudio.com/)** and install it for your OS.
+<br>
 
----
-
-## 4. Python Setup (All Platforms)
-
-Python is used heavily in open-source projects. Having it set up means you can run scripts, install packages, and contribute to a wider range of repos.
-
----
-
-### Windows
-
-**Step 1 — Download the installer**
-
-Go to: **[python.org/downloads](https://www.python.org/downloads/)** and click the **"Download Python 3.x.x"** button.
-
-**Step 2 — Run the installer**
-
-Double-click the downloaded `.exe`. On the first screen, check **"Add Python to PATH"** before clicking anything else. Then click **"Install Now"**.
-
-**Step 3 — Verify**
-
-Open a new Git Bash or Command Prompt window:
-
-```bash
-python --version
-pip --version
-```
-
----
-
-### macOS
-
-**Step 1 — Install via Homebrew**
-
-```bash
-brew install python
-```
-
-**Step 2 — Verify**
-
-```bash
-python3 --version
-pip3 --version
-```
-
-On macOS with Homebrew, the commands are `python3` and `pip3` — this avoids conflicts with the system Python.
-
-**Step 3 — (Optional) Alias `python` to `python3`**
-
-```bash
-echo 'alias python=python3' >> ~/.zprofile
-echo 'alias pip=pip3' >> ~/.zprofile
-source ~/.zprofile
-```
-
----
-
-### Linux
-
-**Step 1 — Check if Python is already installed**
+### Step 1 — Check if Python is already installed
 
 ```bash
 python3 --version
@@ -269,24 +346,64 @@ python3 --version
 
 If you see `Python 3.x.x`, skip to Step 3.
 
-**Step 2 — Install if missing**
+---
+
+### Step 2 — Install if missing
 
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip
 ```
 
-**Step 3 — Verify pip**
+---
+
+### Step 3 — Verify pip
 
 ```bash
 pip3 --version
 ```
 
-**Step 4 — (Optional) Point `python` to Python 3**
+---
+
+### Step 4 — (Optional) Point `python` to Python 3
 
 ```bash
 sudo apt install python-is-python3
 ```
+
+</details>
+
+---
+
+<details>
+<summary><strong>VS Code</strong></summary>
+
+<br>
+
+### Step 1 — Install VS Code
+
+Download from **[code.visualstudio.com](https://code.visualstudio.com/)** and install it for Linux.
+
+---
+
+### Step 2 — Install the Python extension
+
+The Python extension adds language support, IntelliSense, linting, and the ability to run Python files directly inside VS Code.
+
+1. Open VS Code
+2. Click the **Extensions** icon in the left sidebar (or press `Ctrl + Shift + X`)
+3. Search for **Python**
+4. Click **Install** on the extension published by **Microsoft**
+
+You can also install it from the terminal:
+
+```bash
+code --install-extension ms-python.python
+```
+
+Once installed, VS Code will automatically detect your Python installation and use it when you open any `.py` file.
+
+</details>
 
 ---
 
