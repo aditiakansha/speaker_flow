@@ -75,7 +75,7 @@ Your `git config --list` output should include:
 user.name=Your Name
 user.email=you@example.com
 init.defaultbranch=main
-core.editor=code --wait
+
 ```
 
 If all of the above work and GitLens is visible in your Extensions sidebar, you are ready for the workshop.

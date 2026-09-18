@@ -36,7 +36,7 @@ Git solves both of these problems.
 - It tells you exactly what changed, when, and who changed it
 - It lets you experiment on a separate branch without touching the working version
 
-Without Git, teams share code over email, Google Drive, or folders named `project-final-v2-ACTUAL-FINAL.zip`. Git replaced all of that.
+
 
 ---
 
@@ -49,10 +49,6 @@ Initialises a new Git repository in the current folder. Creates a hidden `.git/`
 ```bash
 git init
 ```
-
-![VS Code terminal showing git init output - Initialized empty Git repository in repo/.git/](assets/files-4/git-init.png)
-
-Git confirms: `Initialized empty Git repository in .../repo/.git/`
 
 ---
 
@@ -125,7 +121,6 @@ Shows the current state of your working directory. Run this constantly, before a
 git status
 ```
 
-![Terminal showing git status output with calc.py listed in red as an untracked file](assets/files-4/git-status.png)
 
 Reading this output:
 - `On branch main` - you are on the main branch
@@ -164,13 +159,16 @@ After `git add calc.py`, running `git status` again shows the file in green unde
 
 Saves a snapshot of everything in the staging area. The message should briefly describe what changed.
 
+Think of it like you work in a company if a piece of code you wrote or chnaged today needs to be understood by someone a year down the line they need to know what you changed and why?
+A simple commit message does that.. It describes everything that was done before for someone new who joins the repo.
+
 ```bash
 git commit -m "added calc.py"
 ```
 
 Every commit gets a unique ID and records the author, date, and message. Write commit messages that explain what changed, not just "update" or "fix."
 
-![Terminal showing git add calc.py, git status confirming it is staged in green, then git add . and git commit](assets/files-4/git-add-commit.png)
+
 
 This diagram shows how your changes move from your working directory through staging, into your local repo, and eventually up to GitHub:
 
@@ -191,8 +189,6 @@ For a compact view, one commit per line:
 ```bash
 git log --oneline
 ```
-
-![Terminal showing git log full output then git log --oneline showing one line per commit](assets/files-4/git-log.png)
 
 `git log --oneline` collapses each commit to its short ID and message. `HEAD -> main` means this is the latest commit on the main branch.
 

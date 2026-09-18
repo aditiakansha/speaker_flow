@@ -1,0 +1,45 @@
+<svg width="1600" height="800" viewBox="0 0 1600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="800" fill="#111315"/>
+
+  <g font-family="'Trebuchet MS', 'Segoe UI', sans-serif">
+    <text x="160" y="120" fill="#7ecbff" font-size="42" font-weight="700">Your Computer / Laptop</text>
+    <text x="900" y="120" fill="#7ecbff" font-size="42" font-weight="700">Cloud Server</text>
+    <text x="1315" y="120" fill="#7ecbff" font-size="42" font-weight="700">your friend</text>
+
+    <rect x="130" y="180" width="470" height="430" rx="26" stroke="#f5a7a0" stroke-width="6" fill="none"/>
+    <rect x="840" y="180" width="500" height="430" rx="26" stroke="#f5a7a0" stroke-width="6" fill="none"/>
+    <circle cx="1430" cy="365" r="175" stroke="#f3f0ee" stroke-width="6" fill="none"/>
+
+    <text x="325" y="270" fill="#f1f7ff" font-size="54" font-style="italic">git</text>
+    <text x="210" y="365" fill="#f1f7ff" font-size="32">your local system</text>
+    <text x="225" y="420" fill="#f1f7ff" font-size="32">code files</text>
+    <text x="180" y="515" fill="#f1f7ff" font-size="32">local git repository</text>
+
+    <text x="930" y="330" fill="#f1f7ff" font-size="58" font-weight="700">GIT HUB</text>
+    <text x="900" y="430" fill="#f1f7ff" font-size="30">hosted on the cloud</text>
+    <text x="900" y="470" fill="#f1f7ff" font-size="30">contains</text>
+    <text x="900" y="560" fill="#f1f7ff" font-size="34">Remote Repository</text>
+    <text x="890" y="610" fill="#f1f7ff" font-size="28">(Shared project hub)</text>
+
+    <text x="1360" y="300" fill="#f1f7ff" font-size="30">download</text>
+    <text x="1365" y="345" fill="#f1f7ff" font-size="30">the repo</text>
+    <text x="1375" y="390" fill="#f1f7ff" font-size="30">from cloud</text>
+
+    <path d="M600 390 H810" stroke="#f1f3f4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrowGray)"/>
+    <path d="M600 480 H810" stroke="#f1f3f4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrowGray)"/>
+    <path d="M600 570 H810" stroke="#f1f3f4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrowGray)"/>
+
+    <path d="M1225 365 H1320" stroke="#f1f3f4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrowGray)"/>
+    <path d="M1225 430 H1320" stroke="#f1f3f4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrowGray)"/>
+    <path d="M1225 500 H1320" stroke="#f1f3f4" stroke-width="8" stroke-linecap="round" marker-end="url(#arrowGray)"/>
+
+    <text x="610" y="355" fill="#f1f3f4" font-size="24">you send ur code</text>
+    <text x="1320" y="310" fill="#f1f3f4" font-size="24">download</text>
+  </g>
+
+  <defs>
+    <marker id="arrowGray" markerWidth="18" markerHeight="18" refX="10" refY="9" orient="auto">
+      <path d="M0 0L18 9L0 18V0Z" fill="#f1f3f4"/>
+    </marker>
+  </defs>
+</svg>
