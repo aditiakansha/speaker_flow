@@ -8,11 +8,58 @@ At this point you have a local Git repository with at least one commit. This sec
 
 Go to [github.com](https://github.com) and click **Sign up**. You can sign up with your email or continue with Google.
 
-![GitHub homepage](assets/files-5/github-homepage.png)
+# SSH Setup for GitHub
 
-Once you are signed in, click your profile picture in the top right corner to open the account menu. From here you can get to your repositories, profile, settings, and more.
+## Windows (PowerShell)
 
-![GitHub profile dropdown menu](assets/files-5/github-profile-menu.png)
+### Step 1 - Generate SSH Key
+```powershell
+ssh-keygen -t ed25519 -C "your@email.com" -f "$env:USERPROFILE\.ssh\github_ed25519"
+```
+Press Enter twice to skip the passphrase (or set one if you want).
+
+### Step 2 - Copy the Public Key
+```powershell
+Get-Content "$env:USERPROFILE\.ssh\github_ed25519.pub" | Set-Clipboard
+```
+
+### Step 3 - Add Key to GitHub
+1. Go to **GitHub > Settings > SSH and GPG keys**
+2. Click **New SSH key**
+3. Paste the key and save
+
+### Step 4 - Test the Connection
+```powershell
+ssh -T -i "$env:USERPROFILE\.ssh\github_ed25519" git@github.com
+```
+You should see: `Hi username! You've successfully authenticated`
+
+---
+
+## Mac (Terminal)
+
+### Step 1 - Generate SSH Key
+```bash
+ssh-keygen -t ed25519 -C "your@email.com" -f ~/.ssh/github_ed25519
+```
+Press Enter twice to skip the passphrase.
+
+### Step 2 - Copy the Public Key
+```bash
+pbcopy < ~/.ssh/github_ed25519.pub
+```
+
+### Step 3 - Add Key to GitHub
+1. Go to **GitHub > Settings > SSH and GPG keys**
+2. Click **New SSH key**
+3. Paste the key and save
+
+### Step 4 - Test the Connection
+```bash
+ssh -T -i ~/.ssh/github_ed25519 git@github.com
+```
+You should see: `Hi username! You've successfully authenticated`
+
 
 ---
 
@@ -20,9 +67,6 @@ Once you are signed in, click your profile picture in the top right corner to op
 
 A repository on GitHub is where your project lives online. Think of it as the cloud version of the folder on your laptop.
 
-Click the **+** icon in the top right corner and select **New repository**.
-
-![GitHub create new repository page](assets/files-5/github-create-repo.png)
 
 Fill in the details:
 
@@ -79,7 +123,6 @@ This shows you the URL your repo is connected to. If you see your GitHub link, y
 git push -u origin main
 ```
 
-![Terminal showing git push -u origin main completing successfully](assets/files-5/git-push.png)
 
 This command sends all your local commits up to GitHub. Your files are now online.
 
@@ -99,19 +142,6 @@ That is all you need from now on every time you want to send new changes up.
 
 Refresh the GitHub page in your browser. Your files are now live.
 
-![GitHub repository showing calc.py and readme.md after being pushed](assets/files-5/github-files-pushed.png)
-
-What you are looking at on this page:
-
-**Your files** — `calc.py` and `readme.md` are listed with the message you wrote when you last saved them. This is your commit message, and it shows up next to every file it touched.
-
-**README rendered at the bottom** — GitHub automatically displays your `readme.md` as a formatted page beneath the file list. This is why a README matters — it is the first thing anyone sees when they visit your project.
-
-**Contributors on the right** — this panel shows everyone who has ever sent code to this repo. Right now it is just you. When teammates push their own commits, they appear here automatically.
-
-**Public badge** — next to the repo name, this shows whether your repo is public or private.
-
-**1 Commit** — the total number of times someone has saved a snapshot to this repo so far.
 
 ---
 
@@ -139,14 +169,6 @@ git fetch
 
 After running this, open the **Source Control** panel in VS Code by clicking the branch icon in the left sidebar. In the GitLens Graph at the bottom of that panel you will see two sections:
 
-![VS Code Source Control panel showing GitLens graph with outgoing and incoming changes](assets/files-5/git-fetch-gitlens.png)
-
-**Outgoing Changes** — work you have done locally that has not been sent to GitHub yet.
-
-**Incoming Changes** — work that exists on GitHub that has not come down to your machine yet. This is where the browser edit you just made shows up.
-
-Your local `calc.py` still has the subtract function at this point. `git fetch` showed you the change is waiting — but did not bring it in yet. This gives you a chance to look before you apply.
-
 ---
 
 ## Step 8 — git pull
@@ -156,8 +178,6 @@ Your local `calc.py` still has the subtract function at this point. `git fetch` 
 ```bash
 git pull
 ```
-
-![VS Code GitLens graph and terminal showing git pull completing with file changes](assets/files-5/git-pull.png)
 
 After this runs, open `calc.py` — the subtract function is gone. Your local file now matches what is on GitHub.
 
@@ -175,25 +195,6 @@ Use `git fetch` when you want to see what changed on GitHub before deciding what
 This is the standard habit when working with others. Always pull before you push.
 
 
-## The Full Flow
-
-```bash
-# First time — connect and push
-git remote add origin "https://github.com/yourusername/reponame"
-git push -u origin main
-
-# Every time after — save and send
-git add .
-git commit -m "describe what you changed"
-git push
-
-# Get changes from GitHub
-git fetch          # see what is new without changing your files
-git pull           # bring the changes into your local files
-
-# If your push gets rejected
-git pull
-git push
 
 ---
 
@@ -201,21 +202,16 @@ git push
 
 Sometimes you are in the middle of a change and something else comes up — you need to switch branches, pull new code, or fix something urgent. But your work is half done and you are not ready to commit it. `git stash` takes all your uncommitted changes and puts them into a temporary pocket, leaving your working directory completely clean. When you are ready to come back, you bring them back out.
 
-**Demo — adding the subtract function back to `calc.py`**
-
-After the `git pull` from the previous section, the subtract function was removed. Add it back manually into `calc.py` and save the file — but do not commit it yet.
-
 ```bash
 git status
 ```
-
-Git shows `calc.py` as modified in red. This is your dirty working tree — you have changes sitting there that are not saved in a commit.
+We change something in the readme file or we simply add a comment in the calc.py
 
 ```bash
 git stash
 ```
 
-Your working directory is instantly clean. Open `calc.py` — the subtract function is gone again. The change is safely stored in the stash pocket.
+Your working directory is instantly clean. Any changes you made disappeared. The change is safely stored in the stash pocket.
 
 ```bash
 git status
@@ -227,7 +223,7 @@ Nothing to commit, working tree clean. You can now safely switch branches or pul
 git stash pop
 ```
 
-The subtract function comes back into `calc.py` exactly where you left it. Git confirms it dropped `stash@{0}` — the change is restored and cleared from the stash.
+The comment comes back from the stash 
 
 ```bash
 git stash list
@@ -235,16 +231,7 @@ git stash list
 
 Empty — because `git stash pop` already consumed it. If you want to show a non-empty stash list during the demo, run `git stash list` before `git stash pop`, not after.
 
-![Terminal showing the full git stash flow — status dirty, stash cleans it, status clean, stash pop restores, stash list empty](assets/files-5/git-stash.png)
 
-Now commit the subtract function properly and push:
-
-```bash
-git add .
-git commit -m "feat: add subtract function back"
-git push
-```
-```
 
 ---
 
@@ -258,3 +245,4 @@ git push
 | Every push after | `git push` |
 | See what changed on GitHub | `git fetch` |
 | Bring GitHub changes to your machine | `git pull` |
+| Save unfinished work temporarily | `git stash` |
