@@ -1,8 +1,6 @@
 # 🛠️ Git & GitHub Workshop — Pre-Workshop Setup Manual
 
 > **Please complete this BEFORE you arrive at the workshop.**  
-> The session moves fast — if Git isn't installed, you'll fall behind in the first 15 minutes.  
-> If you get stuck at any step, ping us on the group and we'll help you sort it out.
 
 ---
 
@@ -13,8 +11,9 @@
 3. [macOS — Git Setup](#3-macos--git-setup)
 4. [Linux — Git Setup](#4-linux--git-setup)
 5. [VS Code Setup (All Platforms)](#5-vs-code-setup-all-platforms)
-6. [Quick Reference Cheatsheet](#6-quick-reference-cheatsheet)
-7. [Pre-Workshop Checklist](#7-pre-workshop-checklist)
+6. [Python Setup (All Platforms)](#6-python-setup-all-platforms)
+7. [Quick Reference Cheatsheet](#7-quick-reference-cheatsheet)
+8. [Pre-Workshop Checklist](#8-pre-workshop-checklist)
 
 ---
 
@@ -25,12 +24,7 @@
 | **Git** | A version control system | Tracks changes to your code, lets you collaborate |
 | **Homebrew** (Mac only) | A package manager for macOS | Makes installing developer tools like Git simple |
 | **VS Code** | Code editor | Where you'll write code — we'll connect it to Git |
-| **GitLens** | A VS Code extension | Supercharges Git inside the editor with blame, history, and more |
-
-> **Not sure which OS you have?**  
-> - Windows: Start → Settings → System → About  
-> - Mac: Apple logo top-left → "About This Mac"  
-> - Linux: You already know. 😄
+| **Python** | A programming language | Useful for scripting, automation, and open-source contributions |
 
 ---
 
@@ -45,7 +39,11 @@
 
 Go to: **[git-scm.com/download/win](https://git-scm.com/download/win)**
 
-The download should start automatically. If it doesn't, click the link for "64-bit Git for Windows Setup."
+> 💡 **Note:** The current latest version is **Git 2.55.0** (released 2026-08-20). The page looks like this — click the top download link for the x64 Setup:
+>
+> ![git-scm.com install page showing Git 2.55.0 for Windows](assets/gitscm_screenshot-2.png)
+
+Click the link for "64-bit Git for Windows Setup."
 
 ---
 
@@ -184,6 +182,12 @@ Press **`Cmd + Space`** to open Spotlight Search, type **Terminal**, and hit Ent
 ---
 
 ### Step 2 — Install Homebrew
+
+> 💡 **What is Homebrew?** It's the most popular package manager for macOS — think of it as an app store for developer tools that you control from the terminal. The official site looks like this:
+>
+> ![Homebrew website showing the install command](assets/homebrew_screenshot.png)
+>
+> Homebrew supports macOS (Sonoma 14 and newer), Linux, and WSL.
 
 Paste the following command into Terminal and press **Enter**:
 
@@ -527,6 +531,30 @@ code --version
 
 ---
 
+### Part C — Install GitLens
+
+GitLens is a VS Code extension that makes Git history easier to understand. It shows inline blame, commit history, and branch activity directly in the editor, which is very useful during the workshop.
+
+1. Open VS Code.
+2. Click the **Extensions** icon in the left sidebar.
+3. Search for **GitLens**.
+4. Click **Install**.
+5. If VS Code asks you to restart extensions, click **Restart Extensions**.
+
+![VS Code Extensions view showing GitLens in the installed list with a restart prompt](assets/Screenshot%202026-09-17%20at%203.26.02%E2%80%AFPM.png)
+
+After installation, the GitLens marketplace page should look like this:
+
+![GitLens marketplace page showing the extension details, install buttons, and auto-update toggle](assets/Screenshot%202026-09-17%20at%203.30.46%E2%80%AFPM.png)
+
+You can also install it from the terminal:
+
+```bash
+code --install-extension eamodio.gitlens
+```
+
+---
+
 ### Set VS Code as Git's default editor
 
 Run this after the `code` command is working:
@@ -559,114 +587,198 @@ You're in the wrong directory. Use `cd` to navigate to the right folder first, t
 
 ---
 
-### Part C — Install GitLens
+## 6. Python Setup (All Platforms)
 
-GitLens is a free VS Code extension that supercharges Git inside the editor. Instead of running terminal commands to find out who changed a line, why it exists, or what the file looked like before — GitLens shows all of that directly in your code.
-
----
-
-#### What GitLens Does
-
-**1. 🔍 Inline Blame Annotations**
-
-Every line of code gets a subtle annotation at the end showing who last changed it, when, and with what commit message. Hover over it for the full commit details.
-
-> This is the single biggest beginner unlock — instead of guessing why code exists, you immediately see the context.
+> 💡 Python is used heavily in open-source projects. Having it set up means you can run scripts, install packages, and contribute to a much wider range of repos.
 
 ---
 
+### Windows — Python Setup
 
+#### Step 1 — Download the installer
 
+Go to: **[python.org/downloads](https://www.python.org/downloads/)**
 
-
-
-#### Why Install It? (Quick Comparison)
-
-| Situation | Without GitLens | With GitLens |
-|-----------|----------------|--------------|
-| "Who wrote this line?" | `git blame` in terminal | Hover over the line |
-| "Why does this function exist?" | Dig through commit logs | Click the blame annotation |
-| "What changed in this file recently?" | `git log -- filename` | Open File History in one click |
-| "Did I break something before?" | Compare diffs via terminal | Visual side-by-side diff |
-| "Who else has worked on this?" | Multiple `git log` commands | Sidebar at a glance |
+Click the yellow **"Download Python 3.x.x"** button (latest stable version).
 
 ---
 
-#### How to Install GitLens
+#### Step 2 — Run the installer
 
-**Method 1 — Extensions Panel (Easiest)**
+Double-click the downloaded `.exe`.
 
-1. In VS Code, press:
-   - **Mac:** `Cmd + Shift + X`
-   - **Windows/Linux:** `Ctrl + Shift + X`
+> ⭐ **Critical:** On the first screen, check **"Add Python to PATH"** before clicking anything else. If you miss this, Python won't work from the terminal.
 
-2. In the search box, type:
-   ```
-   GitLens
-   ```
-
-   ![VS Code Extensions panel showing GitLens in the installed extensions list](<assets/Screenshot 2026-09-17 at 3.26.02 PM.png>)
-
-3. Click on **GitLens — Git supercharged** by **GitKraken**
-
-   ![GitLens Marketplace details page in VS Code](<assets/Screenshot 2026-09-17 at 3.30.46 PM.png>)
-
-   > ⚠️ Make sure it's the one by **GitKraken** with millions of downloads — not a clone with a similar name.
-
-4. Click the blue **Install** button. No restart needed — GitLens activates immediately. ✅
+Then click **"Install Now"**.
 
 ---
 
-**Method 2 — Browser Marketplace**
+#### Step 3 — Verify Python is installed
 
-1. Go to: **[marketplace.visualstudio.com/items?itemName=eamodio.gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)**
-2. Click the green **Install** button
-3. Your browser will ask to open VS Code — click **Open Visual Studio Code**
-4. VS Code opens the extension page — click **Install** again
-
----
-
-**Method 3 — Terminal**
+Open a new **Git Bash** or **Command Prompt** window and run:
 
 ```bash
-code --install-extension eamodio.gitlens
+python --version
+```
+
+Expected output: `Python 3.x.x` ✅
+
+Also verify pip (Python's package manager) is installed:
+
+```bash
+pip --version
 ```
 
 ---
 
-#### Verifying GitLens is Active
+#### ⚠️ Common Issues — Windows Python
 
-Open any folder that has a Git repository. You should immediately see:
+**❌ `python` is not recognised**
 
-- Faint grey text at the end of whichever line your cursor is on — that's inline blame
-- A new **GitLens icon** in the left sidebar
-- A "GitLens" item in the bottom status bar
+You forgot to check "Add Python to PATH" during installation.
 
----
+Fix — reinstall and tick the box, or add it manually:
+1. Search for **"Edit the system environment variables"** in the Start menu
+2. Click **Environment Variables**
+3. Under **System variables**, find **Path** and click **Edit**
+4. Add the path to your Python install (usually `C:\Users\YourName\AppData\Local\Programs\Python\Python3xx\` and the `\Scripts\` subfolder)
 
+**❌ `python` opens the Microsoft Store instead of running**
 
-
-
-
-**❌ GitLens installed but I see no inline blame**
-
-Open a file inside a Git repository (a folder where `git init` has been run or that was cloned from GitHub). GitLens only activates inside Git repos — it won't show on random files outside one.
-
----
-
-**❌ The blame text is there but it's distracting / I want to turn it off**
-
-Press `Cmd/Ctrl + Shift + P`, type `GitLens: Toggle Line Blame` and hit Enter. It toggles off instantly. You can turn it back on the same way.
+Windows has a stub that redirects to the Store. Fix it:
+1. Search **"Manage app execution aliases"** in Settings
+2. Turn off both **"python.exe"** and **"python3.exe"** aliases
 
 ---
 
-**❌ GitLens shows "No commits yet" on everything**
+### macOS — Python Setup
 
-You haven't made any commits in this repo yet. Make your first commit and GitLens will start showing history.
+macOS may have an old Python 2 system install. We'll install a fresh Python 3 via Homebrew.
+
+#### Step 1 — Install Python via Homebrew
+
+```bash
+brew install python
+```
 
 ---
 
-## 6. Quick Reference Cheatsheet
+#### Step 2 — Verify Python is installed
+
+```bash
+python3 --version
+```
+
+Expected output: `Python 3.x.x` ✅
+
+```bash
+pip3 --version
+```
+
+> **Note:** On macOS with Homebrew, the commands are `python3` and `pip3` (not `python` / `pip`). This is intentional — it avoids conflicts with any system Python.
+
+---
+
+#### Step 3 — (Optional) Set `python` to point to Python 3
+
+If you want to type `python` instead of `python3`:
+
+```bash
+echo 'alias python=python3' >> ~/.zprofile
+echo 'alias pip=pip3' >> ~/.zprofile
+source ~/.zprofile
+```
+
+---
+
+#### ⚠️ Common Issues — macOS Python
+
+**❌ `python3: command not found` after `brew install python`**
+
+Restart your terminal. If it still fails, run:
+
+```bash
+brew link python
+```
+
+**❌ `pip3` installs packages but they can't be found**
+
+Make sure you're running `python3` (not `python`) so you use the Homebrew version, not the system one.
+
+---
+
+### Linux — Python Setup
+
+Most Linux distros come with Python 3 pre-installed. Let's check and install if needed.
+
+#### Step 1 — Check if Python is already installed
+
+```bash
+python3 --version
+```
+
+If you see `Python 3.x.x`, you're done — skip to Step 3. ✅
+
+---
+
+#### Step 2 — Install Python if missing
+
+```bash
+sudo apt update
+sudo apt install python3 python3-pip
+```
+
+When prompted `Do you want to continue? [Y/n]`, press **Y** and Enter.
+
+---
+
+#### Step 3 — Verify pip is installed
+
+```bash
+pip3 --version
+```
+
+Expected output: `pip x.x.x from ...` ✅
+
+---
+
+#### Step 4 — (Optional) Set `python` to point to Python 3
+
+```bash
+sudo apt install python-is-python3
+```
+
+This installs a small package that makes the `python` command point to `python3` system-wide.
+
+---
+
+#### ⚠️ Common Issues — Linux Python
+
+**❌ `pip3: command not found`**
+
+```bash
+sudo apt install python3-pip
+```
+
+**❌ `externally-managed-environment` error when running `pip install`**
+
+Ubuntu 23.04+ restricts system-level pip installs. Use a virtual environment instead:
+
+```bash
+python3 -m venv myenv
+source myenv/bin/activate
+pip install package-name
+```
+
+Or add `--break-system-packages` if you know what you're doing:
+
+```bash
+pip3 install package-name --break-system-packages
+```
+
+---
+
+## 7. Quick Reference Cheatsheet
 
 ```bash
 # ── Terminal Navigation ────────────────────────────────────
@@ -682,6 +794,10 @@ pwd                     # Print the full path of where you are now
 git --version           # Check Git version
 brew --version          # Check Homebrew (Mac only)
 code --version          # Check VS Code CLI
+python --version        # Check Python (Windows)
+python3 --version       # Check Python (Mac/Linux)
+pip --version           # Check pip (Windows)
+pip3 --version          # Check pip (Mac/Linux)
 
 # ── Git Configuration ──────────────────────────────────────
 git config --global user.name "Your Name"
@@ -696,11 +812,19 @@ code filename.txt       # Open a specific file in VS Code
 
 # ── GitLens via Terminal ───────────────────────────────────
 code --install-extension eamodio.gitlens   # Install GitLens
+
+# ── Python / pip ───────────────────────────────────────────
+python3 -m venv myenv          # Create a virtual environment
+source myenv/bin/activate      # Activate it (Mac/Linux)
+myenv\Scripts\activate         # Activate it (Windows)
+pip install package-name       # Install a Python package
+pip list                       # List installed packages
+deactivate                     # Exit the virtual environment
 ```
 
 ---
 
-## 7. Pre-Workshop Checklist
+## 8. Pre-Workshop Checklist
 
 Before you show up, make sure you can tick all of these:
 
@@ -709,6 +833,8 @@ Before you show up, make sure you can tick all of these:
 - [ ] `code .` opens VS Code from the terminal
 - [ ] You have a [GitHub account](https://github.com) (create one if you don't)
 - [ ] GitLens is installed — you can see inline blame text when you open a file in a Git repo
+- [ ] `python3 --version` (Mac/Linux) or `python --version` (Windows) returns a version number
+- [ ] `pip3 --version` (Mac/Linux) or `pip --version` (Windows) works
 
 ---
 
