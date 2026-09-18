@@ -42,13 +42,10 @@
 
 Go to: **[git-scm.com/download/win](https://git-scm.com/download/win)**
 
-<<<<<<< HEAD
 > 💡 **Note:** The current latest version is **Git 2.55.0** (released 2026-08-20). The page looks like this — click the top download link for the x64 Setup:
 >
-> ![git-scm.com install page showing Git 2.55.0 for Windows](assets/gitscm_screenshot-2.png)
+> ![git-scm.com install page showing Git 2.55.0 for Windows](https://i.postimg.cc/DfDcnq6V/gitscm-screenshot-2.png)
 
-=======
->>>>>>> 87c23a45f778d927415f5954167d1a17a3d19629
 Click the link for "64-bit Git for Windows Setup."
 
 ---
@@ -191,7 +188,7 @@ Press **`Cmd + Space`** to open Spotlight Search, type **Terminal**, and hit Ent
 
 > 💡 **What is Homebrew?** It's the most popular package manager for macOS — think of it as an app store for developer tools that you control from the terminal. The official site looks like this:
 >
-> ![Homebrew website showing the install command](assets/homebrew_screenshot.png)
+> ![Homebrew website showing the install command](https://i.postimg.cc/7YFXMgJN/homebrew-screenshot.png)
 >
 > Homebrew supports macOS (Sonoma 14 and newer), Linux, and WSL.
 
