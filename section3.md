@@ -1,13 +1,13 @@
-# Git — Branches & Merging
+# Git: Branches and Merging
 
 This section demonstrates how to work with a forked repository, create and manage feature branches, switch between branches, make different versions of the same change, merge them back into `main`, and resolve a merge conflict.
 
-> **Repository used in this demonstration:** Manan1511/demo  
-> **Upstream repository:** aditjakansha/demo
+> **Repository used in this demonstration:** `<your-username>/<repository>`  
+> **Upstream repository:** `<original-owner>/<repository>`
 
 ---
 
-## Step 1 — Forked Repository vs Standard Repository
+## Step 1: Forked Repository vs Standard Repository
 
 A **standard repository workflow** usually means you clone a repository that you already have direct access to and push your branches back to that same repository.
 
@@ -15,7 +15,7 @@ A **forked repository workflow** creates your own copy of someone else's GitHub 
 
 ```mermaid
 flowchart LR
-    U[Original repository\n aditjakansha/demo] -->|Fork| F[Your fork\n Manan1511/demo]
+    U[Original repository\n original-owner/repository] -->|Fork| F[Your fork\n your-username/repository]
     F -->|git clone| L[Local repository\n on your computer]
     L -->|git push| F
     U -->|git fetch upstream| L
@@ -35,12 +35,12 @@ flowchart LR
 
 ---
 
-## Step 2 — Fork and Clone the Repository
+## Step 2: Fork and Clone the Repository
 
 After forking the repository on GitHub, clone **your fork** to your computer.
 
 ```bash
-git clone https://github.com/Manan1511/demo.git
+git clone https://github.com/<your-username>/<repository>.git
 ```
 
 ![Terminal showing the forked repository being cloned](assets/01-git-clone.png)
@@ -49,12 +49,12 @@ The `git clone` command creates a local Git repository and automatically sets th
 
 ---
 
-## Step 3 — Add the Upstream Remote
+## Step 3: Add the Upstream Remote
 
 The fork is your copy of the project, but you may still need a connection to the **original** repository so that you can fetch its changes.
 
 ```bash
-git remote add upstream https://github.com/aditjakansha/demo.git
+git remote add upstream https://github.com/<original-owner>/<repository>.git
 git remote
 ```
 
@@ -62,8 +62,8 @@ git remote
 
 After this, the repository has two important remote names:
 
-- **`origin`** — your fork, where your work normally gets pushed.
-- **`upstream`** — the original repository, used to obtain updates from the source project.
+- **`origin`**: your fork, where your work normally gets pushed.
+- **`upstream`**: the original repository, used to obtain updates from the source project.
 
 To download information from the original repository without changing your working files, run:
 
@@ -77,16 +77,16 @@ git fetch upstream
 
 ---
 
-## Step 4 — Create and Manage Branches
+## Step 4: Create and Manage Branches
 
 Branches let you work on separate versions of the project without changing `main` until you are ready to merge the work.
 
-### Branch #1
+### Branch 1
 
 For the demonstrated workflow, branch #1 was created with:
 
 ```bash
-git branch subtraction#1
+git branch <feature-branch>
 git branch
 ```
 
@@ -94,18 +94,18 @@ git branch
 
 ### About `git branch -c`
 
-`git branch subtraction#1` is the normal command for creating a new branch at the current `HEAD`.
+`git branch <feature-branch>` is the normal command for creating a new branch at the current `HEAD`.
 
 `git branch -c` has a different purpose: **copying an existing branch** to another branch name. It is useful when you intentionally want the new branch to copy another branch's branch configuration and reflog as part of the branch-copy operation. It is **not required** just to create a fresh feature branch for this demonstration.
 
-So, for this section, the executed command is shown as `git branch subtraction#1`, matching the demonstrated workflow.
+Replace `<feature-branch>` with a descriptive name, such as `feature-typed-subtraction`.
 
-### Branch #2
+### Branch 2
 
 The second branch was created with `git checkout -b`, which creates the branch and immediately switches to it.
 
 ```bash
-git checkout -b subtraction#2
+git checkout -b <another-feature-branch>
 ```
 
 ![Terminal showing branch #2 being created and checked out](assets/05-git-checkout-b.png)
@@ -122,9 +122,9 @@ git checkout -b subtraction#2
 
 ---
 
-## Step 5 — Make Changes on Branch #2
+## Step 5: Make Changes on Branch 2
 
-While on `subtraction#2`, a subtraction function was added to `calc.py`.
+While on `<another-feature-branch>`, a subtraction function was added to `calc.py`.
 
 The implementation used in this branch is the simple version:
 
@@ -141,27 +141,27 @@ git commit -am "added a simple subtraction function"
 
 ![Terminal showing the subtraction function commit on branch #2](assets/06-commit-subtraction2.png)
 
-This creates a commit containing the branch #2 implementation.
+This creates a commit containing the implementation on the current branch.
 
 ---
 
-## Step 6 — Switch to Branch #1 and Make a Different Change
+## Step 6: Switch to Branch 1 and Make a Different Change
 
-Now switch from branch #2 to branch #1.
+Now switch from the second branch to the first branch.
 
 The modern command is:
 
 ```bash
-git switch subtraction#1
+git switch <feature-branch>
 ```
 
 The same operation can also be performed with:
 
 ```bash
-git checkout subtraction#1
+git checkout <feature-branch>
 ```
 
-On branch #1, the subtraction function was implemented with explicit floating-point type annotations:
+On the first branch, the subtraction function was implemented with explicit floating-point type annotations:
 
 ```python
 def subtraction(a: float, b: float) -> float:
@@ -180,7 +180,7 @@ At this point, the two branches contain different implementations of the same fu
 
 ---
 
-## Step 7 — Switch Back to `main`
+## Step 7: Switch Back to `main`
 
 Before merging, return to the main branch:
 
@@ -194,28 +194,28 @@ You are now on `main`, so merges will apply their changes into `main`.
 
 ---
 
-## Step 8 — Cleanly Merge Branch #1
+## Step 8: Cleanly Merge Branch 1
 
 The first feature branch can be merged into `main`:
 
 ```bash
-git merge subtraction#1
+git merge <feature-branch>
 ```
 
 ![Terminal showing the successful merge of branch #1](assets/09-merge-subtraction1.png)
 
 This merge succeeds cleanly because the changes from branch #1 do not overlap with another competing change in the version of `main` being merged at this point.
 
-After the merge, `main` contains the float-based subtraction function from `subtraction#1`.
+After the merge, `main` contains the float-based subtraction function from `<feature-branch>`.
 
 ---
 
-## Step 9 — Merge Branch #2 and Trigger a Conflict
+## Step 9: Merge Branch 2 and Trigger a Conflict
 
 Now try to merge the second feature branch:
 
 ```bash
-git merge subtraction#2
+git merge <another-feature-branch>
 ```
 
 ![Terminal showing the merge conflict](assets/10-merge-conflict.png)
@@ -226,7 +226,7 @@ When this happens, Git cannot safely decide which version should become the fina
 
 ---
 
-## Step 10 — Understanding the Conflict Markers
+## Step 10: Understanding the Conflict Markers
 
 VS Code shows the conflicting area using markers like these:
 
@@ -235,16 +235,16 @@ VS Code shows the conflicting area using markers like these:
 # Current change from the branch you are merging into
 =======
 # Incoming change from the branch being merged
->>>>>>> subtraction#2
+>>>>>>> <another-feature-branch>
 ```
 
-In this demonstration, the conflict is between the float-typed version on `main` and the simpler version from `subtraction#2`.
+In this demonstration, the conflict is between the float-typed version on `main` and the simpler version from `<another-feature-branch>`.
 
 ![VS Code conflict editor showing current and incoming changes](assets/11-conflict-editor.png)
 
 ---
 
-## Step 11 — Four Ways to Resolve a Merge Conflict
+## Step 11: Four Ways to Resolve a Merge Conflict
 
 There are four practical approaches shown by the VS Code merge-conflict editor.
 
@@ -307,7 +307,7 @@ This is the most flexible option because you are not limited to choosing one sid
 
 ---
 
-## Step 12 — Mark the Conflict as Resolved
+## Step 12: Mark the Conflict as Resolved
 
 After editing `calc.py`, make sure no conflict markers such as `<<<<<<<`, `=======`, or `>>>>>>>` remain in the file.
 
@@ -327,13 +327,13 @@ At this point, the merge is completed and `main` contains the final version you 
 
 ---
 
-## Step 13 — Cleanup
+## Step 13: Cleanup
 
 Once both feature branches have been merged and are no longer needed, remove them:
 
 ```bash
-git branch -D subtraction#1
-git branch -D subtraction#2
+git branch -D <feature-branch>
+git branch -D <another-feature-branch>
 ```
 
 ![Terminal showing both feature branches being deleted](assets/12-delete-branches.png)
@@ -344,25 +344,27 @@ git branch -D subtraction#2
 
 ## Full Flow
 
+Replace each angle-bracket placeholder with a value from your own repository before running the commands.
+
 ```bash
 # Clone your fork
-git clone https://github.com/Manan1511/demo.git
+git clone https://github.com/<your-username>/<repository>.git
 
 # Add the original repository as upstream
-git remote add upstream https://github.com/aditjakansha/demo.git
+git remote add upstream https://github.com/<original-owner>/<repository>.git
 git fetch upstream
 
-# Create branch #1
-git branch subtraction#1
+# Create a branch without switching to it
+git branch <feature-branch>
 
-# Create and switch to branch #2
-git checkout -b subtraction#2
+# Create and switch to another branch
+git checkout -b <another-feature-branch>
 
 # Work on branch #2
 git commit -am "added a simple subtraction function"
 
-# Switch to branch #1
-git switch subtraction#1
+# Switch to the first branch
+git switch <feature-branch>
 
 # Work on branch #1
 git commit -am "added a subtraction function using float"
@@ -370,19 +372,19 @@ git commit -am "added a subtraction function using float"
 # Return to main
 git checkout main
 
-# Merge branch #1 cleanly
-git merge subtraction#1
+# Merge the first branch cleanly
+git merge <feature-branch>
 
-# Merge branch #2 — conflict occurs
-git merge subtraction#2
+# Merge the second branch, which causes a conflict
+git merge <another-feature-branch>
 
 # Resolve calc.py manually, then stage and commit
 git add calc.py
 git commit -m "resolve merge conflict"
 
 # Cleanup
-git branch -D subtraction#1
-git branch -D subtraction#2
+git branch -D <feature-branch>
+git branch -D <another-feature-branch>
 ```
 
 ---
