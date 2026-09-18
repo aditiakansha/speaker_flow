@@ -45,45 +45,7 @@ You should see your `user.name`, `user.email`, and `init.defaultBranch` in the o
 
 ---
 
-## 2. Set Up the `code` Command
-
-This lets you type `code .` in any terminal to open that folder instantly in VS Code.
-
-**Windows**
-
-The `code` command is added to PATH automatically during VS Code installation. Open Command Prompt or Git Bash and run:
-
-```bash
-code --version
-```
-
-If it works, you're done. If not, open VS Code, press `Ctrl + Shift + P`, type `shell command`, and select **"Shell Command: Install 'code' command in PATH"**. Restart your terminal.
-
-**macOS / Linux**
-
-1. Open VS Code
-2. Press `Cmd + Shift + P` (macOS) or `Ctrl + Shift + P` (Linux)
-3. Type `shell command`
-4. Click **"Shell Command: Install 'code' command in PATH"**
-5. Close your terminal completely and reopen it
-
-![VS Code Command Palette showing the Shell Command: Install 'code' command in PATH option highlighted](assets/installation-2/1789734986478_image.png)
-
-Test it:
-
-```bash
-code --version
-```
-
-Then try opening a folder:
-
-```bash
-code .
-```
-
----
-
-## 3. Install GitLens
+## 2. Install GitLens
 
 GitLens is a VS Code extension that shows Git history, inline blame, and branch activity directly in the editor.
 
@@ -107,19 +69,7 @@ code --install-extension eamodio.gitlens
 
 ---
 
-## 4. Set VS Code as Git's Default Editor
-
-Run this after the `code` command is working:
-
-```bash
-git config --global core.editor "code --wait"
-```
-
-This means whenever Git needs you to write a commit message or resolve a conflict, it will open VS Code instead of the default terminal editor.
-
----
-
-## 5. Verify Everything
+## 3. Verify Everything
 
 Run these one by one and confirm each returns output:
 
@@ -140,6 +90,3 @@ core.editor=code --wait
 
 If all of the above work and GitLens is visible in your Extensions sidebar, you are ready for the workshop.
 
----
-
-> Questions? Drop a message in the workshop group before the session.
