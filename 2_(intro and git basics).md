@@ -19,10 +19,12 @@ GitHub is a website where you store your Git repositories online. Git lives on y
 
 You use Git on your machine, then push your work to GitHub so others can see it, contribute to it, or you can access it from another device.
 
-![Git vs GitHub comparison showing Git as a local version control system and GitHub as a cloud-based hosting service](assets/git-vs-github.png)
+![Git vs GitHub comparison showing Git as a local version control system and GitHub as a cloud-based hosting service](assets/Screenshot%202026-09-19%20at%201.39.55%E2%80%AFAM.png)
 
-![Git and GitHub workflow diagram showing your local repository, the cloud-hosted remote repository, and a friend downloading the repo](assets/git-github-flow.svg)
+The analogy 
 
+Git is like Microsoft Word on your computer — you write and save files locally.
+GitHub is like Google Docs — it puts those files online so others can access, collaborate, and you have a backup in the cloud.
 ---
 
 ## Why Do You Need Git?
