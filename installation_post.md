@@ -39,6 +39,10 @@ git config --list
 
 You should see your `user.name`, `user.email`, and `init.defaultBranch` in the output.
 
+![Terminal showing git config commands being run and git config --list output with user.name, user.email, and init.defaultbranch](assets/installation-2/1789734924797_image.png)
+
+> Note: You may also see `credential.helper=osxkeychain` on macOS — that is normal and was added automatically by your system.
+
 ---
 
 ## 2. Set Up the `code` Command
@@ -62,6 +66,8 @@ If it works, you're done. If not, open VS Code, press `Ctrl + Shift + P`, type `
 3. Type `shell command`
 4. Click **"Shell Command: Install 'code' command in PATH"**
 5. Close your terminal completely and reopen it
+
+![VS Code Command Palette showing the Shell Command: Install 'code' command in PATH option highlighted](assets/installation-2/1789734986478_image.png)
 
 Test it:
 
@@ -134,3 +140,6 @@ core.editor=code --wait
 
 If all of the above work and GitLens is visible in your Extensions sidebar, you are ready for the workshop.
 
+---
+
+> Questions? Drop a message in the workshop group before the session.
