@@ -19,7 +19,7 @@ GitHub is a website where you store your Git repositories online. Git lives on y
 
 You use Git on your machine, then push your work to GitHub so others can see it, contribute to it, or you can access it from another device.
 
-![Git vs GitHub comparison showing Git as a local version control system and GitHub as a cloud-based hosting service](/mnt/user-data/uploads/1789743850065_image.png)
+![Git vs GitHub comparison showing Git as a local version control system and GitHub as a cloud-based hosting service](assets/git-vs-github.png)
 
 ---
 
@@ -174,7 +174,7 @@ Every commit gets a unique ID and records the author, date, and message. Write c
 
 This diagram shows how your changes move from your working directory through staging, into your local repo, and eventually up to GitHub:
 
-![Diagram showing git add moving files to staging area, git commit to local repo, git push to remote repo, git pull back to local, and git checkout to working directory](/mnt/user-data/uploads/1789743934625_image.png)
+![Diagram showing git add moving files to staging area, git commit to local repo, git push to remote repo, git pull back to local, and git checkout to working directory](assets/git-flow-diagram.png)
 
 ---
 
