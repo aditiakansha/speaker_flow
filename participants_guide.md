@@ -4,10 +4,17 @@
 
 ---
 
-<details>
-<summary><strong>1. What You're Installing & Why</strong></summary>
+## Table of Contents
 
-<br>
+1. [What You're Installing & Why](#1-whats-youre-installing--why)
+2. [Git Setup](#2-git-setup)
+3. [VS Code Setup (All Platforms)](#3-vs-code-setup-all-platforms)
+4. [Python Setup (All Platforms)](#4-python-setup-all-platforms)
+5. [Pre-Workshop Checklist](#5-pre-workshop-checklist)
+
+---
+
+## 1. What You're Installing & Why
 
 | Tool | What it is | Why you need it |
 |------|------------|-----------------|
@@ -15,12 +22,12 @@
 | **VS Code** | Code editor | Where you'll write code — we'll connect it to Git |
 | **Python** | A programming language | Useful for scripting, automation, and open-source contributions |
 
-</details>
-
 ---
 
+## 2. Git Setup
+
 <details>
-<summary><strong>2. Windows — Git Setup</strong></summary>
+<summary><strong>Windows</strong></summary>
 
 <br>
 
@@ -76,7 +83,7 @@ Expected output: `git version 2.x.x`
 ---
 
 <details>
-<summary><strong>3. macOS — Git Setup</strong></summary>
+<summary><strong>macOS</strong></summary>
 
 <br>
 
@@ -148,7 +155,7 @@ Expected output: `git version 2.x.x`
 ---
 
 <details>
-<summary><strong>4. Linux — Git Setup</strong></summary>
+<summary><strong>Linux</strong></summary>
 
 <br>
 
@@ -192,21 +199,13 @@ Expected output: `git version 2.x.x`
 
 ---
 
-<details>
-<summary><strong>5. VS Code Setup (All Platforms)</strong></summary>
-
-<br>
+## 3. VS Code Setup (All Platforms)
 
 Download from **[code.visualstudio.com](https://code.visualstudio.com/)** and install it for your OS.
 
-</details>
-
 ---
 
-<details>
-<summary><strong>6. Python Setup (All Platforms)</strong></summary>
-
-<br>
+## 4. Python Setup (All Platforms)
 
 Python is used heavily in open-source projects. Having it set up means you can run scripts, install packages, and contribute to a wider range of repos.
 
@@ -289,22 +288,15 @@ pip3 --version
 sudo apt install python-is-python3
 ```
 
-</details>
-
 ---
 
-<details>
-<summary><strong>7. Pre-Workshop Checklist</strong></summary>
-
-<br>
+## 5. Pre-Workshop Checklist
 
 - [ ] `git --version` returns a version number
 - [ ] VS Code is installed and opens
 - [ ] You have a [GitHub account](https://github.com)
 - [ ] `python3 --version` (Mac/Linux) or `python --version` (Windows) returns a version number
 - [ ] `pip3 --version` (Mac/Linux) or `pip --version` (Windows) works
-
-</details>
 
 ---
 
