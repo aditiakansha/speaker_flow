@@ -21,10 +21,12 @@ You use Git on your machine, then push your work to GitHub so others can see it,
 
 ![Git vs GitHub comparison showing Git as a local version control system and GitHub as a cloud-based hosting service](assets/Screenshot%202026-09-19%20at%201.39.55%E2%80%AFAM.png)
 
-The analogy 
+### The analogy
 
 Git is like Microsoft Word on your computer — you write and save files locally.
+
 GitHub is like Google Docs — it puts those files online so others can access, collaborate, and you have a backup in the cloud.
+
 ---
 
 ## Why Do You Need Git?
@@ -176,7 +178,7 @@ Every commit gets a unique ID and records the author, date, and message. Write c
 
 This diagram shows how your changes move from your working directory through staging, into your local repo, and eventually up to GitHub:
 
-![Diagram showing git add moving files to staging area, git commit to local repo, git push to remote repo, git pull back to local, and git checkout to working directory](assets/git-flow-diagram.png)
+![Diagram showing git add moving files to staging area, git commit to local repo, git push to remote repo, git pull back to local, and git checkout to working directory](assets/installation-2/Screenshot%202026-09-19%20at%201.57.17%E2%80%AFAM.png)
 
 ---
 
