@@ -5,6 +5,25 @@ This section demonstrates how to work with a forked repository, create and manag
 > **Repository used in this demonstration:** `<your-username>/<repository>`  
 > **Upstream repository:** `<original-owner>/<repository>`
 
+## Index
+
+- [Step 1: Forked Repository vs Standard Repository](#step-1-forked-repository-vs-standard-repository)
+- [Step 2: Fork and Clone the Repository](#step-2-fork-and-clone-the-repository)
+- [Step 3: Add the Upstream Remote](#step-3-add-the-upstream-remote)
+- [Step 4: Create and Manage Branches](#step-4-create-and-manage-branches)
+- [Step 5: Make Changes on Branch 2](#step-5-make-changes-on-branch-2)
+- [Step 6: Switch to Branch 1 and Make a Different Change](#step-6-switch-to-branch-1-and-make-a-different-change)
+- [Step 7: Switch Back to `main`](#step-7-switch-back-to-main)
+- [Step 8: Cleanly Merge Branch 1](#step-8-cleanly-merge-branch-1)
+- [Step 9: Merge Branch 2 and Trigger a Conflict](#step-9-merge-branch-2-and-trigger-a-conflict)
+- [Step 10: Understanding the Conflict Markers](#step-10-understanding-the-conflict-markers)
+- [Step 11: Four Ways to Resolve a Merge Conflict](#step-11-four-ways-to-resolve-a-merge-conflict)
+- [Step 12: Mark the Conflict as Resolved](#step-12-mark-the-conflict-as-resolved)
+- [Step 13: Cleanup](#step-13-cleanup)
+- [Full Flow](#full-flow)
+- [Quick Reference](#quick-reference)
+- [Key Takeaways](#key-takeaways)
+
 ---
 
 ## Step 1: Forked Repository vs Standard Repository
