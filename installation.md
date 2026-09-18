@@ -544,11 +544,11 @@ GitLens is a VS Code extension that makes Git history easier to understand. It s
 4. Click **Install**.
 5. If VS Code asks you to restart extensions, click **Restart Extensions**.
 
-![VS Code Extensions view showing GitLens in the installed list with a restart prompt](assets/Screenshot%202026-09-17%20at%203.26.02%E2%80%AFPM.png)
+![VS Code Extensions view showing GitLens in the installed list with a restart prompt](https://i.postimg.cc/V60WCvLP/Screenshot-2026-09-17-at-3-26-02-PM.png)
 
 After installation, the GitLens marketplace page should look like this:
 
-![GitLens marketplace page showing the extension details, install buttons, and auto-update toggle](assets/Screenshot%202026-09-17%20at%203.30.46%E2%80%AFPM.png)
+![GitLens marketplace page showing the extension details, install buttons, and auto-update toggle](https://i.postimg.cc/9fnB0Z29/Screenshot-2026-09-17-at-3-30-46-PM.png)
 
 You can also install it from the terminal:
 
