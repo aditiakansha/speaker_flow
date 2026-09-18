@@ -21,6 +21,8 @@ You use Git on your machine, then push your work to GitHub so others can see it,
 
 ![Git vs GitHub comparison showing Git as a local version control system and GitHub as a cloud-based hosting service](assets/git-vs-github.png)
 
+![Git and GitHub workflow diagram showing your local repository, the cloud-hosted remote repository, and a friend downloading the repo](assets/git-github-flow.svg)
+
 ---
 
 ## Why Do You Need Git?
