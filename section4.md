@@ -2,12 +2,9 @@
 
 This section demonstrates how to work with changes arriving from an upstream repository, inspect earlier commits, undo incorrect changes in different ways, rewrite local history when necessary, rebase a feature branch, cherry-pick a specific commit, and tag a final release.
 
-> **Repository used in this demonstration:** `Manan1511/demo`  
-> **Upstream repository:** `aditiakansha/demo`
-
 ## Index
 
-- [Step 1: Background — An Incorrect Upstream Change](#step-1-background--an-incorrect-upstream-change)
+- [Step 1: Background and An Incorrect Upstream Change](#step-1-background-and-an-incorrect-upstream-change)
 - [Step 2: Fetch and Merge an Upstream Branch](#step-2-fetch-and-merge-an-upstream-branch)
 - [Step 3: Inspect an Earlier Commit with `git checkout`](#step-3-inspect-an-earlier-commit-with-git-checkout)
 - [Step 4: Revert an Incorrect Commit](#step-4-revert-an-incorrect-commit)
@@ -22,15 +19,15 @@ This section demonstrates how to work with changes arriving from an upstream rep
 
 ---
 
-## Step 1: Background — An Incorrect Upstream Change
+## Step 1: Background and An Incorrect Upstream Change
 
-For this demonstration, assume **Aditi is working in the background** on the upstream repository and has committed an incorrect change to a new branch.
+For this demonstration, assume a team member has committed an incorrect change to a new branch on the upstream repository.
 
 The important idea is that the change exists on the upstream repository, but it has not yet been integrated into your local branch.
 
 ```mermaid
 flowchart LR
-    A[Aditi's upstream repository] -->|new commit| B[upstream/newbranch#1]
+    A[Upstream repository] -->|new commit| B[upstream/branch-name]
     B -->|git fetch upstream| C[Local remote-tracking branch]
     C -->|git merge| D[Your current branch]
     D --> E[Fix / clean history / release]
@@ -50,41 +47,37 @@ The first step is to fetch the changes from the upstream repository.
 git fetch upstream
 ```
 
-![Terminal showing git fetch upstream discovering the power branch](assets/01-git-fetch-upstream.png)
+![Terminal showing git fetch upstream discovering a new branch](assets/01-git-fetch-upstream.png)
 
-The fetch shown above discovers the new `power` branch and records it locally as `upstream/power`. Fetching does **not** automatically change the files in your current working branch.
+The fetch shown above discovers a new branch and records it locally as `upstream/<branch-name>`. Fetching does **not** automatically change the files in your current working branch.
 
 For a specific upstream branch, the same idea can be written as:
 
 ```bash
-git fetch upstream <newbranch#1>
+git fetch upstream <branch-name>
 ```
 
 ### Create a local branch from the upstream branch
 
-The demonstration then creates a local `power` branch that tracks the upstream branch:
+The demonstration then creates a local branch that tracks the upstream branch:
 
 ```bash
-git checkout -b power upstream/power
+git checkout -b <local-branch> upstream/<branch-name>
 ```
 
-![Terminal showing the power branch being created from upstream/power](assets/02-checkout-upstream-power.png)
+![Terminal showing a branch being created from upstream](assets/02-checkout-upstream-power.png)
 
-This creates the local branch and immediately switches to it. The local branch is also configured to track `upstream/power`.
+This creates the local branch and immediately switches to it. The local branch is also configured to track the upstream branch.
 
 ### Merge the upstream branch
 
 When you are already on the branch that should receive the upstream work, the merge operation is:
 
 ```bash
-git merge upstream/<newbranch#1>
+git merge upstream/<branch-name>
 ```
 
-For the branch shown in the demonstration, that would be:
-
-```bash
-git merge upstream/power
-```
+Replace `<branch-name>` with the name of the upstream branch you want to merge.
 
 `git merge` takes the commits reachable from the specified branch and integrates them into the currently checked-out branch.
 
@@ -342,10 +335,10 @@ Replace placeholders with the branch names and commit hashes used in your reposi
 git fetch upstream
 
 # Create a local branch from the upstream branch
-git checkout -b power upstream/power
+git checkout -b <local-branch> upstream/<branch-name>
 
 # Merge a specific upstream branch when required
-git merge upstream/<newbranch#1>
+git merge upstream/<branch-name>
 
 # Inspect an older commit
 git checkout <commit-hash>
@@ -360,7 +353,7 @@ git push --force
 
 # Keep corrected changes staged while rewriting the history
 git reset --soft <commit-hash>
-git commit -m "corrected changes"
+git commit -m "describe your corrected changes"
 git push --force
 
 # Move to main and rebase the current feature branch onto it
