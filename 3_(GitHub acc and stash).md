@@ -103,7 +103,6 @@ Go to your terminal and run:
 git remote add origin "https://github.com/yourusername/reponame"
 ```
 
-![Terminal showing git remote add origin being run](assets/files-5/git-remote-add.png)
 
 What this command does — it tells your local Git repo where on the internet to send your code. You are creating a named connection called `origin` that points to your GitHub URL. The name `origin` is just a convention — everyone uses it for their main remote, so stick with it.
 
@@ -153,7 +152,7 @@ Click on `calc.py` in the file list, then click the pencil icon in the top right
 
 Delete the `subtract` function from the code, then scroll down and click **Commit changes**.
 
-![GitHub file editor showing calc.py being edited in the browser](assets/files-5/github-edit-calc.png)
+
 
 That change now exists on GitHub but not on your local machine. Your local `calc.py` still has the subtract function. This is exactly the situation `git fetch` and `git pull` are designed to handle.
 
@@ -202,14 +201,6 @@ This is the standard habit when working with others. Always pull before you push
 
 Sometimes you are in the middle of a change and something else comes up — you need to switch branches, pull new code, or fix something urgent. But your work is half done and you are not ready to commit it. `git stash` takes all your uncommitted changes and puts them into a temporary pocket, leaving your working directory completely clean. When you are ready to come back, you bring them back out.
 
-```bash
-git status
-```
-We change something in the readme file or we simply add a comment in the calc.py
-
-```bash
-git stash
-```
 
 Your working directory is instantly clean. Any changes you made disappeared. The change is safely stored in the stash pocket.
 
