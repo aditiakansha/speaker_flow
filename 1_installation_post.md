@@ -39,10 +39,6 @@ git config --list
 
 You should see your `user.name`, `user.email`, and `init.defaultBranch` in the output.
 
-![Terminal showing git config commands being run and git config --list output with user.name, user.email, and init.defaultbranch](assets/installation-2/1789734924797_image.png)
-
-> Note: You may also see `credential.helper=osxkeychain` on macOS — that is normal and was added automatically by your system.
-
 ---
 
 ## 2. Install GitLens
@@ -54,12 +50,6 @@ GitLens is a VS Code extension that shows Git history, inline blame, and branch 
 3. Search for **GitLens**
 4. Click **Install**
 5. If prompted to restart extensions, click **Restart Extensions**
-
-![VS Code Extensions view showing GitLens installed](https://i.postimg.cc/9Qr6ffWv/Screenshot-2026-09-17-at-3-26-02-PM.png)
-
-After installation, the GitLens page in the marketplace should look like this:
-
-![GitLens extension marketplace page](https://i.postimg.cc/ZRTjCf8x/Screenshot-2026-09-17-at-3-30-46-PM.png)
 
 You can also install GitLens directly from the terminal:
 
