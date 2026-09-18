@@ -52,6 +52,10 @@ Git solves both of these problems.
 
 Initialises a new Git repository in the current folder. Creates a hidden `.git/` folder that Git uses to track everything. Run this once when you start a new project.
 
+A repository (repo) is just a folder that Git is tracking. It stores all your project files and the entire history of every change you have ever made.
+
+Think of it like a Google Drive folder, but instead of just saving the latest version, it saves every version you ever committed. So you can go back in time to any point.
+
 ```bash
 git init
 ```
