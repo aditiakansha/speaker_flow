@@ -126,10 +126,9 @@ Once tests pass and the PR is merged, the code is automatically deployed to prod
 
 The full flow looks like this:
 
-```
 Push code → tests run automatically → if all pass → deploys
                                      → if any fail → blocks the merge
-```
+
 
 No manual steps. No "works on my machine." Every change is tested the same way, every time.
 
