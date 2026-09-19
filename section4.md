@@ -25,7 +25,13 @@ For this demonstration, assume a team member has committed an incorrect change t
 
 The important idea is that the change exists on the upstream repository, but it has not yet been integrated into your local branch.
 
-![Diagram for upstream and history workflow](assets/diagram-section4.png)
+```mermaid
+flowchart LR
+    A[Upstream repository] -->|new commit| B[upstream/branch-name]
+    B -->|git fetch upstream| C[Local remote-tracking branch]
+    C -->|git merge| D[Your current branch]
+    D --> E[Fix / clean history / release]
+```
 
 This gives us a realistic situation for practising history-management commands: first bring the remote work into view, then decide how it should be incorporated or undone.
 
@@ -56,6 +62,9 @@ The demonstration then creates a local branch that tracks the upstream branch:
 ```bash
 git checkout -b <local-branch> upstream/<branch-name>
 ```
+```bash
+git checkout -b power upstream/power
+```
 
 This creates the local branch and immediately switches to it. The local branch is also configured to track the upstream branch.
 
@@ -65,6 +74,9 @@ When you are already on the branch that should receive the upstream work, the me
 
 ```bash
 git merge upstream/<branch-name>
+```
+```bash
+git merge upstream/power
 ```
 
 Replace `<branch-name>` with the name of the upstream branch you want to merge.
@@ -81,13 +93,15 @@ Replace `<branch-name>` with the name of the upstream branch you want to merge.
 git checkout <commit-hash>
 ```
 
-When you check out a commit directly, Git places you in a **detached HEAD** state. You are looking at that exact commit rather than working on the tip of a branch.
+![Checking out a specific commit](assets/wildcard)
 
-This is useful for:
 
-- inspecting how the project looked at an older point in time;
-- testing or comparing an earlier version;
-- checking whether a particular commit introduced a problem.
+
+`git checkout` is also used for other common tasks, such as:
+
+- switching to a different branch: `git checkout <branch-name>`
+- creating and switching to a new branch: `git checkout -b <new-branch>`
+- restoring files from another revision: `git checkout <commit-hash> -- <file>`
 
 It is not the same as moving a branch pointer. If you make commits in detached HEAD and want to keep them, you should create a branch for them.
 
