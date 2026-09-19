@@ -2,9 +2,6 @@
 
 This section demonstrates how to work with a forked repository, create and manage feature branches, switch between branches, make different versions of the same change, merge them back into `main`, and resolve a merge conflict.
 
-> **Repository used in this demonstration:** `<your-username>/<repository>`  
-> **Upstream repository:** `<original-owner>/<repository>`
-
 ## Index
 
 - [Step 1: Forked Repository vs Standard Repository](#step-1-forked-repository-vs-standard-repository)
@@ -32,16 +29,7 @@ A **standard repository workflow** usually means you clone a repository that you
 
 A **forked repository workflow** creates your own copy of someone else's GitHub repository under your account. You normally push your work to your fork (`origin`) while keeping the original repository (`upstream`) connected so that you can fetch updates from it.
 
-```mermaid
-flowchart LR
-    U[Original repo] -->|fork| F[Your fork]
-    F -->|clone| L[Local repo]
-    L -->|push| F
-    U -->|fetch updates| L
-
-    S[Standard repo] -->|clone and push| D[Same repository]
-    F -. different path .-> S
-```
+![Diagram for forked vs standard Git workflow](assets/diagram-section3.png)
 
 ### Key difference
 
