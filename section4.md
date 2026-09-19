@@ -117,6 +117,8 @@ Use `git revert`:
 git revert <commit-hash>
 ```
 
+![Revert workflow example](https://github.com/aditiakansha/speaker_flow/blob/main/assets/revert%20meme.png?raw=true)
+
 ![Git revert creating a new commit that undoes the previous change](https://github.com/aditiakansha/speaker_flow/blob/main/assets/new%20revert%20image.png?raw=true)
 
 `git revert` does **not** erase the old commit. Instead, it creates a **new commit whose changes reverse the selected commit**.
