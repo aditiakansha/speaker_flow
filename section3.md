@@ -34,13 +34,13 @@ A **forked repository workflow** creates your own copy of someone else's GitHub 
 
 ```mermaid
 flowchart LR
-    U[Original repository\n original-owner/repository] -->|Fork| F[Your fork\n your-username/repository]
-    F -->|git clone| L[Local repository\n on your computer]
-    L -->|git push| F
-    U -->|git fetch upstream| L
+    U[Original repo] -->|fork| F[Your fork]
+    F -->|clone| L[Local repo]
+    L -->|push| F
+    U -->|fetch updates| L
 
-    S[Standard repository workflow] --> R[Clone the repository] --> D[Push directly to that repository]
-    F -. different access path .-> S
+    S[Standard repo] -->|clone and push| D[Same repository]
+    F -. different path .-> S
 ```
 
 ### Key difference
@@ -61,8 +61,9 @@ After forking the repository on GitHub, clone **your fork** to your computer.
 ```bash
 git clone https://github.com/<your-username>/<repository>.git
 ```
-
-![Terminal showing the forked repository being cloned](assets/01-git-clone.png)
+```bash
+git clone https://github.com/aditiakansha/super_calculator.git
+```
 
 The `git clone` command creates a local Git repository and automatically sets the cloned GitHub repository as the `origin` remote.
 
@@ -74,10 +75,13 @@ The fork is your copy of the project, but you may still need a connection to the
 
 ```bash
 git remote add upstream https://github.com/<original-owner>/<repository>.git
-git remote
+git remote 
 ```
 
-![Terminal showing upstream being added and the remotes being listed](assets/02-git-remote-upstream.png)
+```bash
+git remote add upstream https://github.com/aditiakansha/super_calculator.git
+git remote 
+```
 
 After this, the repository has two important remote names:
 
@@ -89,8 +93,6 @@ To download information from the original repository without changing your worki
 ```bash
 git fetch upstream
 ```
-
-![Terminal showing git fetch upstream](assets/03-git-fetch-upstream.png)
 
 `git fetch upstream` downloads the upstream branch information and creates or updates remote-tracking references such as `upstream/main`. It does not automatically merge those changes into your current branch.
 
@@ -108,16 +110,10 @@ For the demonstrated workflow, branch #1 was created with:
 git branch <feature-branch>
 git branch
 ```
-
-![Terminal showing the local branches](assets/04-git-branch-list.png)
-
-### About `git branch -c`
-
-`git branch <feature-branch>` is the normal command for creating a new branch at the current `HEAD`.
-
-`git branch -c` has a different purpose: **copying an existing branch** to another branch name. It is useful when you intentionally want the new branch to copy another branch's branch configuration and reflog as part of the branch-copy operation. It is **not required** just to create a fresh feature branch for this demonstration.
-
-Replace `<feature-branch>` with a descriptive name, such as `feature-typed-subtraction`.
+```bash
+git branch feat/subtraction#1
+git branch
+```
 
 ### Branch 2
 
@@ -127,7 +123,9 @@ The second branch was created with `git checkout -b`, which creates the branch a
 git checkout -b <another-feature-branch>
 ```
 
-![Terminal showing branch #2 being created and checked out](assets/05-git-checkout-b.png)
+```bash
+git checkout -b feat/subtraction#2
+```
 
 ### `git branch` vs `git checkout`
 
@@ -158,8 +156,6 @@ After saving the file, the change was committed:
 git commit -am "added a simple subtraction function"
 ```
 
-![Terminal showing the subtraction function commit on branch #2](assets/06-commit-subtraction2.png)
-
 This creates a commit containing the implementation on the current branch.
 
 ---
@@ -172,6 +168,10 @@ The modern command is:
 
 ```bash
 git switch <feature-branch>
+```
+
+```bash
+git switch feat/subtraction#1
 ```
 
 The same operation can also be performed with:
@@ -193,8 +193,6 @@ The change was then committed:
 git commit -am "added a subtraction function using float"
 ```
 
-![Terminal showing the float-based subtraction commit](assets/07-commit-subtraction1-float.png)
-
 At this point, the two branches contain different implementations of the same function. This is what creates the conflict that will appear during the later merge.
 
 ---
@@ -206,8 +204,6 @@ Before merging, return to the main branch:
 ```bash
 git checkout main
 ```
-
-![Terminal showing the switch back to main](assets/08-checkout-main.png)
 
 You are now on `main`, so merges will apply their changes into `main`.
 
@@ -221,7 +217,9 @@ The first feature branch can be merged into `main`:
 git merge <feature-branch>
 ```
 
-![Terminal showing the successful merge of branch #1](assets/09-merge-subtraction1.png)
+```bash
+git merge feat/subtraction#2
+```
 
 This merge succeeds cleanly because the changes from branch #1 do not overlap with another competing change in the version of `main` being merged at this point.
 
@@ -237,7 +235,9 @@ Now try to merge the second feature branch:
 git merge <another-feature-branch>
 ```
 
-![Terminal showing the merge conflict](assets/10-merge-conflict.png)
+```bash
+git merge feat/subtraction#1
+```
 
 Git reports a conflict because both branches changed the same area of `calc.py` in different ways.
 
@@ -258,8 +258,6 @@ VS Code shows the conflicting area using markers like these:
 ```
 
 In this demonstration, the conflict is between the float-typed version on `main` and the simpler version from `<another-feature-branch>`.
-
-![VS Code conflict editor showing current and incoming changes](assets/11-conflict-editor.png)
 
 ---
 
@@ -355,7 +353,10 @@ git branch -D <feature-branch>
 git branch -D <another-feature-branch>
 ```
 
-![Terminal showing both feature branches being deleted](assets/12-delete-branches.png)
+```bash
+git branch -D feat/subtraction#1
+git branch -D feat/subtraction#2
+```
 
 `-D` forces branch deletion. In this demonstration the branches have already been merged into `main`, so the deletion removes the local branch names while keeping the commits that are part of the repository history.
 

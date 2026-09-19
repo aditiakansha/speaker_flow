@@ -47,8 +47,6 @@ The first step is to fetch the changes from the upstream repository.
 git fetch upstream
 ```
 
-![Terminal showing git fetch upstream discovering a new branch](assets/01-git-fetch-upstream.png)
-
 The fetch shown above discovers a new branch and records it locally as `upstream/<branch-name>`. Fetching does **not** automatically change the files in your current working branch.
 
 For a specific upstream branch, the same idea can be written as:
@@ -64,8 +62,6 @@ The demonstration then creates a local branch that tracks the upstream branch:
 ```bash
 git checkout -b <local-branch> upstream/<branch-name>
 ```
-
-![Terminal showing a branch being created from upstream](assets/02-checkout-upstream-power.png)
 
 This creates the local branch and immediately switches to it. The local branch is also configured to track the upstream branch.
 
@@ -90,8 +86,6 @@ Replace `<branch-name>` with the name of the upstream branch you want to merge.
 ```bash
 git checkout <commit-hash>
 ```
-
-![Terminal showing git checkout using a commit hash and entering detached HEAD state](assets/03-checkout-commit-history.png)
 
 When you check out a commit directly, Git places you in a **detached HEAD** state. You are looking at that exact commit rather than working on the tip of a branch.
 
@@ -121,8 +115,6 @@ Use `git revert`:
 git revert <commit-hash>
 ```
 
-![Terminal showing git revert creating a new reverting commit](assets/04-git-revert.png)
-
 `git revert` does **not** erase the old commit. Instead, it creates a **new commit whose changes reverse the selected commit**.
 
 This is useful when the existing history should remain visible and you want the correction to be represented as another commit.
@@ -147,8 +139,6 @@ Use:
 ```bash
 git reset --hard <commit-hash>
 ```
-
-![Terminal showing git reset --hard followed by a rejected push and git push --force](assets/05-reset-hard-force-push.png)
 
 `git reset --hard <commit-hash>` moves the current branch pointer to the selected commit and also makes the index and working tree match that commit.
 
@@ -179,8 +169,6 @@ Use:
 ```bash
 git reset --soft <commit-hash>
 ```
-
-![Terminal showing git reset --soft, a corrected commit, and force pushing the rewritten history](assets/06-reset-soft-force-push.png)
 
 Unlike `--hard`, a soft reset keeps the changes from the removed commits in the staging area.
 
@@ -226,8 +214,6 @@ Then, from the feature branch you want to update, run:
 ```bash
 git rebase main
 ```
-
-![Terminal showing git rebase main completing successfully](assets/07-rebase-main.png)
 
 `git rebase main` takes the commits on the current branch and re-applies them on top of the current tip of `main`.
 
@@ -311,8 +297,6 @@ The demonstration uses an **annotated tag**:
 ```bash
 git tag -a v1.0.0 -m "Released alpha version"
 ```
-
-![Terminal showing an annotated v1.0.0 tag being created and pushed](assets/08-git-tag.png)
 
 An annotated tag stores the tag name together with a message and tag metadata. It gives the selected commit a clear release label such as `v1.0.0`.
 
