@@ -71,6 +71,8 @@ git remote add upstream https://github.com/aditiakansha/super_calculator.git
 git remote 
 ```
 
+![Remote setup example](https://github.com/aditiakansha/speaker_flow/blob/main/assets/remote%20meme.jpg?raw=true)
+
 After this, the repository has two important remote names:
 
 - **`origin`**: your fork, where your work normally gets pushed.
@@ -234,6 +236,8 @@ When this happens, Git cannot safely decide which version should become the fina
 ---
 
 ## Step 10: Understanding the Conflict Markers
+
+![Merge conflict example](https://github.com/aditiakansha/speaker_flow/blob/main/assets/merge%20conflict.jpg?raw=true)
 
 VS Code shows the conflicting area using markers like these:
 
