@@ -6,9 +6,11 @@
 
 Open source means the code is public. Anyone can read it, use it, suggest changes, or build on top of it.
 
-Most of the tools you use every day are open source — VS Code, Python, React, Linux. They are not built by one company behind closed doors. They are built by thousands of developers around the world contributing to a shared codebase on GitHub.
+Most of the tools you use every day are open source: VS Code, Python, React, Linux. They are not built by one company behind closed doors. They are built by thousands of developers around the world contributing to a shared codebase on GitHub.
 
-When you contribute to an open source project, your name goes into the commit history of software that might be used by millions of people. It is also one of the best things you can put on a resume as a developer — real code, in a real project, reviewed by real engineers.
+When you contribute to an open source project, your name goes into the commit history of software that might be used by millions of people. It is also one of the best things you can put on a resume as a developer: real code, in a real project, reviewed by real engineers.
+
+![What is Open Source](https://i.postimg.cc/GpGRS7NM/image.png)
 
 ---
 
@@ -16,23 +18,25 @@ When you contribute to an open source project, your name goes into the commit hi
 
 These are all public repositories on GitHub that anyone can contribute to:
 
-**[facebook/react](https://github.com/facebook/react)** — the JavaScript library that powers Facebook, Instagram, and thousands of other apps. Built and maintained publicly on GitHub.
+**[facebook/react](https://github.com/facebook/react)** — the JavaScript library that powers Facebook, Instagram, and thousands of other apps.
 
 **[microsoft/vscode](https://github.com/microsoft/vscode)** — VS Code itself. The editor you have been using this entire workshop is open source.
 
 **[python/cpython](https://github.com/python/cpython)** — the Python programming language. The language runs open source.
 
-**[torvalds/linux](https://github.com/torvalds/linux)** — the Linux operating system kernel. Started by one person in 1991 and now maintained by thousands.
+**[torvalds/linux](https://github.com/torvalds/linux)** — the Linux kernel. Started by one person in 1991, now maintained by thousands.
 
 **[home-assistant/core](https://github.com/home-assistant/core)** — a home automation platform built entirely by volunteers.
 
 The pattern is the same for all of them. Code lives on GitHub. Anyone can open an issue, suggest a fix, or submit a pull request. Maintainers review and decide what goes in.
 
+![Open Source Projects That Changed the World](https://i.postimg.cc/Kc96Qhzd/0029-15-open-source-projects-that-changed-the-world.png)
+
 ---
 
 ## Open Source Best Practices
 
-Before you contribute to any project — or run your own — these are the standards the open source world follows.
+Before you contribute to any project, or run your own, these are the standards the open source world follows.
 
 ---
 
@@ -44,7 +48,7 @@ Before you contribute to any project — or run your own — these are the stand
 
 **LICENSE** — tells people what they are legally allowed to do with your code. MIT is the most common open source license. It lets anyone use, copy, and modify your code as long as they credit you.
 
-**.gitignore** — tells Git which files to never track. Things like `node_modules/`, `.env`, `__pycache__/`, compiled binaries — these should never go into version control.
+**.gitignore** — tells Git which files to never track. Things like `node_modules/`, `.env`, `__pycache__/`, compiled binaries. These should never go into version control.
 
 **CHANGELOG.md** — a record of what changed in each release. When you ship a new version, you write a short entry here saying what was added, fixed, or removed.
 
@@ -62,11 +66,11 @@ dev           — active development happens here
 feature/name  — one branch per feature or bug fix
 ```
 
-**Never push directly to `main`.** Work happens on feature branches. Those branches get reviewed via a pull request before anything reaches `main`. This protects the stable version of the project at all times.
+Never push directly to `main`. Work happens on feature branches. Those branches get reviewed via a pull request before anything reaches `main`. This protects the stable version of the project at all times.
 
 ---
 
-### Commit Messages — Conventional Commits
+### Commit Messages: Conventional Commits
 
 Conventional commits is a standard format for writing commit messages that the entire open source world has adopted. It makes history readable and allows tools to auto-generate changelogs.
 
@@ -79,7 +83,7 @@ refactor: simplify auth logic
 test: add unit tests for cart
 ```
 
-The format is `type: short description`. The type tells anyone reading the history what kind of change it was without them having to open the diff.
+The format is `type: short description`. The type tells anyone reading the history what kind of change it was without having to open the diff.
 
 ---
 
@@ -89,7 +93,7 @@ A pull request (PR) is how you propose a change to a project. You push your feat
 
 - Never merge your own PR. Someone else always reviews it.
 - Keep PRs small and focused on one thing. A PR that changes 20 files across 5 features is impossible to review well.
-- Write a clear description — what changed, why, and how to test it.
+- Write a clear description: what changed, why, and how to test it.
 - If the project has a PR template, fill it out fully.
 
 ---
@@ -102,19 +106,21 @@ Common labels:
 - `bug` — something is broken
 - `enhancement` — a new feature request
 - `documentation` — something needs to be written or updated
-- `good first issue` — specifically tagged for newcomers. These are simpler, well-scoped tasks that do not require deep knowledge of the codebase. **This is where you should start when contributing to any project for the first time.**
+- `good first issue` — specifically tagged for newcomers. These are simpler, well-scoped tasks that do not require deep knowledge of the codebase. This is where you should start when contributing to any project for the first time.
 
 ---
 
 ## What is CI/CD?
 
-Once a team has multiple people contributing, you need a way to make sure nobody accidentally breaks things. That is what CI/CD is for.
+Think of CI/CD like the quality checks at a factory assembly line. Every product that comes off the line gets tested automatically before it ships. If it fails the test, it does not go out. No one has to remember to check manually; the process runs on its own every single time.
 
-**CI — Continuous Integration**
+That is exactly what CI/CD does for code.
+
+**CI: Continuous Integration**
 
 Every time someone pushes code or opens a pull request, a set of automated tests runs automatically. If the tests fail, the PR cannot be merged. This catches bugs before they reach `main`.
 
-**CD — Continuous Deployment**
+**CD: Continuous Deployment**
 
 Once tests pass and the PR is merged, the code is automatically deployed to production. No one has to manually upload files or run a deploy script.
 
@@ -127,18 +133,24 @@ Push code → tests run automatically → if all pass → deploys
 
 No manual steps. No "works on my machine." Every change is tested the same way, every time.
 
+![CI/CD Pipeline](https://i.postimg.cc/Vv1kRQkh/ci-cd.png)
+
 ---
 
 ## GitHub Actions
 
-GitHub Actions is the CI/CD tool built directly into GitHub. You do not need to set up any external service. You write a `.yml` file, put it in `.github/workflows/`, and GitHub runs it automatically on every push or pull request.
+GitHub Actions is the CI/CD tool built directly into GitHub. You do not need to sign up for any external service or connect anything. You write one `.yml` file, drop it into `.github/workflows/`, and GitHub picks it up automatically.
 
 ```
 your-project/
 └── .github/
     └── workflows/
-        └── main.yml        ← GitHub reads this file and runs it
+        └── main.yml
 ```
+
+Every time you push or open a PR, GitHub spins up a fresh virtual machine in the cloud, runs the steps you defined in that file, and reports back with a pass or fail. You can see the results live in the Actions tab of your repo.
+
+You can also have multiple workflow files for different jobs: one for running tests, one for checking code style, one for deploying. They all live in the same folder and run independently.
 
 A basic workflow file looks like this:
 
@@ -156,45 +168,39 @@ jobs:
       - run: npm test
 ```
 
-Breaking it down line by line:
-
-`name: CI` — the name of this workflow, shown in the GitHub Actions tab.
+Breaking it down:
 
 `on: [push, pull_request]` — when to run this. Every push and every PR triggers it.
 
-`runs-on: ubuntu-latest` — GitHub spins up a fresh virtual machine running Ubuntu to run your code in.
+`runs-on: ubuntu-latest` — GitHub spins up a fresh Ubuntu machine to run your code in.
 
-`uses: actions/checkout@v3` — downloads your repo code onto that machine so the next steps can use it.
+`uses: actions/checkout@v3` — downloads your repo onto that machine so the next steps can use it.
 
-`run: npm install` — installs your project's dependencies on the machine.
+`run: npm install` — installs dependencies.
 
 `run: npm test` — runs your test suite. If any test fails, the whole workflow fails and GitHub blocks the merge.
 
-When you open a PR on GitHub, you will see a section at the bottom showing whether the checks passed or failed — that is GitHub Actions running in real time.
+When you open a PR, you will see a section at the bottom showing whether the checks passed or failed. That is GitHub Actions running in real time.
 
 ---
 
-## Walking Through a Real Repo — facebook/react
+## Walking Through a Real Repo: facebook/react
 
 **Link: [github.com/facebook/react](https://github.com/facebook/react)**
 
-React is one of the best examples to look at because it is large enough to have every practice in place, but well-organised enough that a beginner can navigate it.
-
 Here is what to look at and in what order:
 
-**1. CONTRIBUTING.md** — go to the root of the repo and open this file. It tells you exactly how the React team expects contributions, how to set up the project, what the PR process looks like, and what the coding standards are. Every serious open source project has one of these.
+**1. CONTRIBUTING.md** — open this from the root of the repo. It tells you exactly how the React team expects contributions, how to set up the project locally, and what the PR process looks like. Every serious open source project has one of these.
 
-**2. A merged pull request** — click on the Pull Requests tab, filter by Closed. Open any merged PR. Scroll to the bottom and you will see a section showing the CI checks that ran automatically — tests, linting, type checks. All had to pass before the PR could be merged.
+**2. A merged pull request** — click Pull Requests, filter by Closed, open any merged PR. Scroll to the bottom and you will see the CI checks that ran automatically: tests, linting, type checks. All had to pass before it could be merged.
 
-**3. Issues filtered by `good first issue`** — click the Issues tab and filter by the label `good first issue`. These are the tasks the React team has specifically flagged as suitable for new contributors. This is where you start if you want to contribute.
+**3. Issues filtered by `good first issue`** — click Issues and filter by that label. These are the tasks the React team has specifically flagged as suitable for new contributors. This is where you start.
 
-**4. The .github/workflows/ folder** — in the repo file list, navigate into `.github/workflows/`. Open any `.yml` file. You will see the same structure as the example above — triggers, jobs, steps. This is the actual CI pipeline that runs on every PR to React.
+**4. The .github/workflows/ folder** — navigate into it from the file list and open any `.yml` file. You will see the same structure as the example above. This is the actual CI pipeline that runs on every PR to React.
 
 ---
 
 ## The Open Source Contribution Loop
-
-This is the complete cycle, from finding a project to getting your code merged:
 
 ```
 1. Fork the repo          — makes a copy under your GitHub account
@@ -209,41 +215,31 @@ This is the complete cycle, from finding a project to getting your code merged:
 10. PR gets merged        — your code is now part of the project
 ```
 
-Every open source contribution in the world follows this loop. Fork, clone, branch, change, push, PR, review, merge.
+Every open source contribution in the world follows this loop.
 
 ---
 
-## Competition — What to Expect
+## Competition: What to Expect
 
-The competition you are preparing for is an open source debugging challenge. Here is what that means in practice:
-
-**Format** — you will be given a repository with intentional bugs in it. Your job is to find them, fix them, and submit a pull request with your changes.
+You will be given a repository with intentional bugs in it. Your job is to find them, fix them, and submit a pull request with your changes.
 
 **What will be evaluated:**
 - Whether the bug is actually fixed and the code works
 - How clean and readable your fix is
-- Your commit message — does it follow conventional commits?
-- Your PR description — is it clear what you changed and why?
+- Your commit message: does it follow conventional commits?
+- Your PR description: is it clear what you changed and why?
 - Whether you touched only what needed to be touched
 
-**What you need to be comfortable with going into it:**
-- Cloning a repo you have never seen before and navigating it quickly
-- Reading existing code and understanding what it is trying to do
-- Making a fix on a feature branch, not on `main`
-- Writing a clear commit message in the `fix: description` format
-- Opening a pull request with a proper description
+**The mindset:** you are not building something from scratch. You are reading someone else's code, understanding it well enough to find what is wrong, and fixing it cleanly. The best fixes are the smallest ones.
 
-**The mindset** — you are not building something from scratch. You are reading someone else's code, understanding it well enough to find what is wrong, and fixing it cleanly. The best fixes are the smallest ones — change only what needs to change, nothing else.
-
-A good repo to practice on before the competition: **[firstcontributions/first-contributions](https://github.com/firstcontributions/first-contributions)** — it is specifically designed to walk you through the fork → clone → branch → PR cycle in a safe environment with no pressure.
+A good repo to practice on before the competition: **[firstcontributions/first-contributions](https://github.com/firstcontributions/first-contributions)** — specifically designed to walk you through the fork → clone → branch → PR cycle with no pressure.
 
 ---
 
 ## Quick Reference
 
 ```bash
-# Fork a repo on GitHub (done in the browser)
-# Then clone your fork:
+# Fork on GitHub (done in the browser), then clone your fork:
 git clone https://github.com/yourusername/repo-name
 
 # Create a feature branch

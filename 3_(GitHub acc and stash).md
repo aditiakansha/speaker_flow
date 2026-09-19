@@ -161,7 +161,7 @@ After this runs, open `calc.py` and the subtract function is gone. Your local fi
 Use `git fetch` when you want to see what changed before deciding what to do. Use `git pull` when you are ready to bring those changes in. In day-to-day work most people just run `git pull` directly.
 
 > ![git pull meme](assets/RSuqRY6cb.jpeg.webp)
-> Always commit your changes before pulling, and fetch first to see what is coming.
+
 
 ---
 
