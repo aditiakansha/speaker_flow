@@ -117,18 +117,13 @@ Use `git revert`:
 git revert <commit-hash>
 ```
 
+![Git revert creating a new commit that undoes the previous change](assets/new revert image.png)
+
 `git revert` does **not** erase the old commit. Instead, it creates a **new commit whose changes reverse the selected commit**.
 
 This is useful when the existing history should remain visible and you want the correction to be represented as another commit.
 
-Example:
-
-```text
-A --- B --- C        original history
-                     R        revert commit
-```
-
-After the revert, the bad commit `C` still exists in history, but `R` reverses its effect.
+After the revert, the bad commit still exists in history, but the new revert commit reverses its effect.
 
 ---
 
