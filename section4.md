@@ -87,7 +87,7 @@ Replace `<branch-name>` with the name of the upstream branch you want to merge.
 git checkout <commit-hash>
 ```
 
-![Checking out a specific commit](assets/wildcard-0000)
+![Checking out a specific commit](assets/wildcard-0000.jpg)
 
 
 
