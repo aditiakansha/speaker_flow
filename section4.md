@@ -25,13 +25,7 @@ For this demonstration, assume a team member has committed an incorrect change t
 
 The important idea is that the change exists on the upstream repository, but it has not yet been integrated into your local branch.
 
-```mermaid
-flowchart LR
-    A[Upstream repository] -->|new commit| B[upstream/branch-name]
-    B -->|git fetch upstream| C[Local remote-tracking branch]
-    C -->|git merge| D[Your current branch]
-    D --> E[Fix / clean history / release]
-```
+![Diagram for upstream workflow and history cleanup](assets/diagram-section4.png)
 
 This gives us a realistic situation for practising history-management commands: first bring the remote work into view, then decide how it should be incorporated or undone.
 
