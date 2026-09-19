@@ -29,7 +29,7 @@ A **standard repository workflow** usually means you clone a repository that you
 
 A **forked repository workflow** creates your own copy of someone else's GitHub repository under your account. You normally push your work to your fork (`origin`) while keeping the original repository (`upstream`) connected so that you can fetch updates from it.
 
-![Diagram for forked vs standard Git workflow](assets/diagram-section3.png)
+![Diagram for forked vs standard Git workflow](https://github.com/aditiakansha/speaker_flow/blob/main/assets/diagram-section3.png?raw=true)
 
 ### Key difference
 

@@ -25,7 +25,7 @@ For this demonstration, assume a team member has committed an incorrect change t
 
 The important idea is that the change exists on the upstream repository, but it has not yet been integrated into your local branch.
 
-![Diagram for upstream workflow and history cleanup](assets/diagram-section4.png)
+![Diagram for upstream workflow and history cleanup](https://github.com/aditiakansha/speaker_flow/blob/main/assets/diagram-section4.png?raw=true)
 
 This gives us a realistic situation for practising history-management commands: first bring the remote work into view, then decide how it should be incorporated or undone.
 
@@ -87,7 +87,7 @@ Replace `<branch-name>` with the name of the upstream branch you want to merge.
 git checkout <commit-hash>
 ```
 
-![Checking out a specific commit](assets/wildcard-0000.jpg)
+![Checking out a specific commit](https://github.com/aditiakansha/speaker_flow/blob/main/assets/wildcard-0000.jpg?raw=true)
 
 
 
@@ -117,7 +117,7 @@ Use `git revert`:
 git revert <commit-hash>
 ```
 
-![Git revert creating a new commit that undoes the previous change](assets/new revert image.png)
+![Git revert creating a new commit that undoes the previous change](https://github.com/aditiakansha/speaker_flow/blob/main/assets/new%20revert%20image.png?raw=true)
 
 `git revert` does **not** erase the old commit. Instead, it creates a **new commit whose changes reverse the selected commit**.
 
