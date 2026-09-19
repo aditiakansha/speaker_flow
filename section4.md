@@ -117,7 +117,9 @@ Use `git revert`:
 git revert <commit-hash>
 ```
 
-<img src="https://github.com/aditiakansha/speaker_flow/blob/main/assets/revert%20meme.png?raw=true" alt="Revert workflow example" width="300">
+<p align="center">
+   <img src="https://github.com/aditiakansha/speaker_flow/blob/main/assets/revert%20meme.png?raw=true" alt="Revert workflow example" width="300">
+</p>
 
 ![Git revert creating a new commit that undoes the previous change](https://github.com/aditiakansha/speaker_flow/blob/main/assets/new%20revert%20image.png?raw=true)
 
