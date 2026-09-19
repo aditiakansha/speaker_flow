@@ -66,7 +66,6 @@ Run these one by one and confirm each returns output:
 ```bash
 git --version
 git config --list
-code --version
 ```
 
 Your `git config --list` output should include:

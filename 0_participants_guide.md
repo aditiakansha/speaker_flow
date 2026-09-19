@@ -178,8 +178,7 @@ It will ask for your Mac login password. Type it and press Enter — you won't s
 When Homebrew finishes, it will display something like this:
 
 ```
-==> Next steps:
-Run these two commands in your terminal to add Homebrew to your PATH:
+
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
